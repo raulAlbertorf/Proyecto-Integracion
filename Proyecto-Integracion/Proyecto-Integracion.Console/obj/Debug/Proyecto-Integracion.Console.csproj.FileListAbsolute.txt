@@ -1,0 +1,10 @@
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\Proyecto-Integracion.Console.exe.config
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\Proyecto-Integracion.Console.exe
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\Proyecto-Integracion.Console.pdb
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\Proyecto-Integracion.Models.dll
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\MySql.Data.dll
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\Proyecto-Integracion.Models.pdb
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\bin\Debug\MySql.Data.xml
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\obj\Debug\Proyecto-Integracion.Console.csprojResolveAssemblyReference.cache
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\obj\Debug\Proyecto-Integracion.Console.exe
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Console\obj\Debug\Proyecto-Integracion.Console.pdb

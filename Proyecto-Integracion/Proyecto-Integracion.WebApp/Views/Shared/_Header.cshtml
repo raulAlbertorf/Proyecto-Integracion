@@ -1,0 +1,87 @@
+﻿@{
+    var cuenta_activa = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
+    var perfil_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
+}
+
+
+<nav class="navbar navbar-default navbar-lm-white">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand texto-naranja letra-prompt" href="@Url.Action("Index", "Home")">
+                <strong>ReportIt</strong>
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="">
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class="fa fa-home" aria-hidden="true"></i>  Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa fa-question-circle" aria-hidden="true"></i> FAQ
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @{
+                    if (cuenta_activa != null)
+                    {
+                        if (perfil_activo != null)
+                        {
+                            <li><a class="texto-naranja letra-prompt nuevo_reporte" href="#">Nuevo</a></li>
+                            <li>
+                                <a class="texto-naranja letra-prompt dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">
+                                    <span class="fa fa-user"></span>
+                                    <strong> Raul</strong>
+                                    <span class="caret texto-naranja"></span>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="">Mi Perfil</a></li>
+                                        <li><a href="#">Mis Reportes</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Salir</a></li>
+                                    </ul>
+                                </a>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li><a class="texto-naranja" href="">Ingresar</a></li>
+                    }
+                }
+                
+                
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid navbar-search">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-reorder texto-naranja"></i> <span class="caret texto-naranja"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Delegación</a></li>
+                        <li><a href="#">Fecha</a></li>
+                        <li><a href="#">Palabra clave</a></li>
+                        <li><a href="#">Tipo de delito</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Mi Ubicación</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control" aria-label="...">
+            </div>
+        </div>
+    </div>
+</div>

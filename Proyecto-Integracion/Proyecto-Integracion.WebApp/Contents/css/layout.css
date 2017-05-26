@@ -1,0 +1,44 @@
+﻿body{
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+*{
+    border-radius: 0 !important;
+}
+
+#wrapper {
+  display: block;
+  //background: transparent url("/Contents/img/background/background.jpg") repeat scroll center 0px;
+}
+
+#header {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.texto-naranja{
+    color: orange !important;
+}
+
+.letra-prompt{
+    font-family: 'Text Me One', sans-serif, cursive !important;
+}
+    
+.navbar-lm-white {
+    background-color: white;
+    margin-bottom: 0px;
+}
+
+.sin-margen {
+	margin: 0px;
+}   
+
+.nuevo_reporte{
+  font-weight:900;
+  font-size: larger;
+}
+
+.nav-search{
+}

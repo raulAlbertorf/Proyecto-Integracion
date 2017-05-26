@@ -1,0 +1,20 @@
+﻿
+.jumbotron{
+    background-color: white;
+    border: solid 2px black;
+}
+
+.filtros button:hover{
+    background-color: orange;
+    color: white;
+}
+
+.filtros button:focus{
+    background-color: orange;
+    color: white;
+}
+
+.panel-centro-ayuda{
+    height:300px;
+    margin-bottom: 200px;
+}

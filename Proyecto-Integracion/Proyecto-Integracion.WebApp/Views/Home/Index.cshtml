@@ -1,0 +1,95 @@
+﻿@model Proyecto_Integracion.Models.Estanteria
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section Scripts{
+    <!--<script src="~/Contents/js/Google-Maps-Night.js"></script>-->
+    <script>
+        $(".navbar-search").hide();
+    </script>
+}
+<link href="~/Contents/css/Google-Maps.css" rel="stylesheet" />
+<link href="~/Contents/css/index.css" rel="stylesheet" />
+<div class="container">
+    <div class="page-header letra-prompt text-justify">
+        <h1>ReportIt es una nueva forma de publicar incidentes delictivos.</h1>
+        <h1>¡<a class="texto-naranja" href="@Url.Action("Ingresar","Cuenta")">Registrate</a> y comienza a reportar todo! <small>Si ves algo di algo</small></h1>
+    </div>
+    <div class="jumbotron text-center">
+        <h1 class="letra-prompt">¿Busca algun incidente?</h1>
+        <div class="btn-group btn-group-lg filtros" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Mi Ubicación</button>
+            <button type="button" class="btn btn-default">Delegación</button>
+            <button type="button" class="btn btn-default">Fecha</button>
+            <button type="button" class="btn btn-default">Palabra clave</button>
+            <button type="button" class="btn btn-default">Tipo de delito</button>
+        </div>
+        <br />
+        <br />
+        <br />
+
+        <div class="col-lg-offset-1 col-lg-10">
+            <div class="input-group">
+                <input type="text" class="form-control input-lg" placeholder="Qué estas buscando?...">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search texto-naranja"></i></button>
+                </span>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <div class="panel panel-default panel-centro-ayuda">
+        <div class="panel-heading">
+            <h3 class="panel-title">Centros de ayuda cerca de ti</h3>
+        </div>
+        <div class="panel-body" id="map">
+        </div>
+        <div class="panel-footer">
+            <h5>Telefonos de emergencia</h5>
+            <p><strong>Policia: </strong> 066</p>
+            <p><strong>Emergencia Medica: </strong> ---</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr />
+        <div class="col-md-7">
+            <h2 class="featurette-heading letra-prompt">¿Te  han asaltado y no hiciste nada?</h2>
+            <p class="lead">¿Por qué mejor nos ayudas reportando todos esos delitos?</p>
+        </div>
+        <div class="col-md-5">
+            <div style="background-color: white">
+                <img class="img-responsive center-block img-thumbnail" src="~/Contents/img/Index/stop.jpg" alt="Generic placeholder image">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <img class="img-responsive center-block img-thumbnail" src="~/Contents/img/Index/manos_sucias.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+            <h2 class="featurette-heading letra-prompt">Somos una aplicación que se interesa por tu bienestar poniento a tu alcance informacion y ayuda para incidentes delictivos por tu CDMX.</h2>
+            <p class="lead">Nuestro objetivo es ayudarte a tener mejor seguridad conociendo la incidencia de delitos.</p>
+            <p class="lead"><big><a href="@Url.Action("Ingresar", "Cuenta")">Regístrate</a>, <a href="@Url.Action()"> busca un delito</a><big> y comienza a cuidar de ti y tu familia</p>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 12
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmLtDKhJvyDq1rfqWm2wHQVU3joEs20FY&callback=initMap"
+              async defer></script>
+</div>
+

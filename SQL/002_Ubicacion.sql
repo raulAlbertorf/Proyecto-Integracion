@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS Ubicacion(
+	Id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Latitude FLOAT( 10, 6 ) NOT NULL ,
+  	Longitude FLOAT( 10, 6 ) NOT NULL, 
+    Delegacion VARCHAR(256),
+    CodigoPostal INT
+);

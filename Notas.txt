@@ -1,0 +1,34 @@
+
+//hace un trunk de cada tabla
+ ant -buildfile initialize.xml Init 
+
+//crea tablas si no existen, sp e inserts
+ ant -buildfile initialize.xml CreateDataBase 
+
+
+//Paginas relacionadas
+
+https://hoyodecrimen.com/
+https://www.goplaceit.com/
+
+
+//Buscadores Ejemplos
+http://www.inmuebles24.com/
+
+
+//google maps for asp.net C#
+
+https://www.codeproject.com/Articles/291499/Google-Maps-API-V-for-ASP-NET
+
+https://developers.google.com/maps/documentation/javascript/examples/
+
+
+CLAVE GOOGLE MAPS API
+AIzaSyCBjj7CA1uWQcdB8W4J1571gijbOkEdXgI 
+
+//LINK DE GOOGLE COONTRASEÑA
+https://console.developers.google.com/apis/credentials/wizard?api=maps-backend.googleapis.com&project=reportit-167020
+
+5579 1001 3430 8103
+08/20
+920
