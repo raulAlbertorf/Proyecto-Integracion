@@ -129,13 +129,19 @@
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Contents\css\Google-Maps.css" />
     <Content Include="Contents\css\index.css" />
-    <Content Include="Contents\css\Ingresar.css" />
+    <Content Include="Contents\css\Crear_Cuenta.css" />
     <Content Include="Contents\css\layout.css" />
+    <Content Include="Contents\css\leaflet\leaflet.css" />
     <Content Include="Contents\css\perfil.css" />
     <Content Include="Contents\img\about\ruben.jpg" />
     <Content Include="Contents\img\background\bg-pattern.jpg" />
     <Content Include="Contents\img\index\manos_sucias.jpg" />
     <Content Include="Contents\img\index\stop.jpg" />
+    <Content Include="Contents\img\leaflet_img\layers-2x.png" />
+    <Content Include="Contents\img\leaflet_img\layers.png" />
+    <Content Include="Contents\img\leaflet_img\marker-icon-2x.png" />
+    <Content Include="Contents\img\leaflet_img\marker-icon.png" />
+    <Content Include="Contents\img\leaflet_img\marker-shadow.png" />
     <Content Include="Contents\img\perfiles\PICON_023.png" />
     <Content Include="Contents\img\perfiles\PICON_028.png" />
     <Content Include="Contents\img\perfiles\unknown-user.png" />
@@ -146,8 +152,10 @@
     <Content Include="Contents\js\bootstrap.min.js" />
     <Content Include="Contents\js\countCharacters.js" />
     <None Include="Contents\js\jquery-1.10.2.intellisense.js" />
+    <Content Include="Contents\js\maps.js" />
     <Content Include="Contents\js\jquery-3.1.1.min.js" />
     <Content Include="Contents\js\jquery-ui.js" />
+    <Content Include="Contents\js\leaflet.js" />
     <Content Include="Contents\js\npm.js" />
     <Content Include="Contents\js\pagination.min.js" />
     <Content Include="Global.asax" />
@@ -158,6 +166,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Cuenta\Ingresar.cshtml" />
+    <Content Include="Views\Cuenta\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

@@ -27,12 +27,30 @@ namespace Proyecto_Integracion.WebApp.Controllers
             if (!Utils.Validator.isNullOrEmptyOrWhiteSpace(new List<String>() { c.Email, c.Contrasena }) && c.IniciarSesion())
             {
                 Utils.SessionManager.Ingresar(c.Email);
-                Utils.SessionManager.RegistarPerfil(c.Perfiles().First().Id);
-                return RedirectToAction("Perfiles", "Cuenta");
+                Perfil perfil = new Perfil();
+                perfil.Seleccionar(c.Email);
+                Utils.SessionManager.RegistarPerfil(perfil.Id);
+                return RedirectToAction("Index", "Home");
             }
             Utils.UIWarnings.SetError("Su Email o Contraseña es incorrecto");
             return View();
         }
 
+        public ActionResult Salir()
+        {
+            Utils.SessionManager.Salir();
+            return RedirectToAction("Index", "Home");
+        }
+
+        //Get : Cuenta
+        public ActionResult Crear()
+        {
+            Cuenta c = Utils.SessionManager.CuentaActiva();
+            if (c != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
     }
 }

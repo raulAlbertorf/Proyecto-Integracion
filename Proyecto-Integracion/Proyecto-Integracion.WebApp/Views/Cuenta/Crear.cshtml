@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section Styles{
+    <link href="~/Contents/css/Google-Maps.css" rel="stylesheet" />
+    <link href="~/Contents/css/Crear_Cuenta.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/Contents/js/maps.js"></script>
+}
+
+
+<div class="container">
+    <div class="col-md-offset-2 col-md-8 ">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title letra-prompt">Registrar</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group text-center">
+                        <label for="inputEmail3" class="col-sm-2 control-label input-lg letra-prompt">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="inputPassword3" class="col-sm-2 control-label input-lg letra-prompt">Contraseña</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="inputNOmbre3" class="col-sm-2 control-label input-lg letra-prompt">Nombre</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control input-lg" id="inputNombre3" placeholder="Juan Perez">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="inputNOmbre3" class="col-sm-2 control-label input-lg letra-prompt">Latitude</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control input-lg" id="inLatitud">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="inputNOmbre3" class="col-sm-2 control-label input-lg letra-prompt">Longitud</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control input-lg" id="inLongitud">
+                        </div>
+                    </div>
+                </form>
+                <div class="panel panel-default mapa-mi-ubicacion">
+                    <div class="panel-heading">
+                        <h3 class="panel-title letra-prompt">Mi Ubicación</h3>
+                    </div>
+                    <div class="panel-body" id="map">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer pull-right">
+                <input class="btn btn-success btn-lg letra-prompt" value="Registrame" type="submit" />
+                <button type="button" class="btn btn-danger btn-lg letra-prompt" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

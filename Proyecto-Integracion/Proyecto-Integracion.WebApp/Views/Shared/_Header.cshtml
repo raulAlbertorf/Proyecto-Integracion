@@ -42,13 +42,13 @@
                             <li>
                                 <a class="texto-naranja letra-prompt dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">
                                     <span class="fa fa-user"></span>
-                                    <strong> Raul</strong>
+                                    <strong> @perfil_activo.Nombre</strong>
                                     <span class="caret texto-naranja"></span>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li><a href="">Mi Perfil</a></li>
                                         <li><a href="#">Mis Reportes</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="#">Salir</a></li>
+                                        <li><a href="@Url.Action("Salir","Cuenta")">Salir</a></li>
                                     </ul>
                                 </a>
                             </li>
@@ -56,7 +56,7 @@
                     }
                     else
                     {
-                        <li><a class="texto-naranja" href="">Ingresar</a></li>
+                        <li><a class="texto-naranja" href="@Url.Action("Ingresar","Cuenta")">Ingresar</a></li>
                     }
                 }
                 
