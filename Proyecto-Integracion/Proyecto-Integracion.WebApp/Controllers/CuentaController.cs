@@ -54,11 +54,33 @@ namespace Proyecto_Integracion.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Crear(FormCollection collection)
+        public ActionResult Crear(Cuenta c, Perfil p, Ubicacion u)
         {
-            var hola = Request.Form["Email"];
-            var hola2 = Request.Form["in_longitud"];
-            return RedirectToAction("Index","Home");
+            if (!Utils.Validator.isNullOrEmptyOrWhiteSpace(new List<String>() { c.Email, c.Contrasena, p.Nombre}) && Utils.Validator.esValido(c.Email))
+            {
+                if (c.Crear())
+                {
+                    Utils.SessionManager.Ingresar(c.Email);
+                    p.Cuenta = c;
+                    p.UrlImagen = "PICON_029.png"; //imagen por default
+                    //p.Ubicacion = Utils.GeoLocation.ciudad();
+                    p.Crear();
+                    Utils.SessionManager.RegistarPerfil(p.Id);
+
+                    String body = "Hola,<br> Bienvenido a Libromatico,<br> Esperamos que pronto puedas comenzar a compartir o leer nuevos libros<br><br>Saludos";
+
+                    Utils.Email.SendEmail("Bienvenido a Libromatico", c.Email, body);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    Utils.UIWarnings.SetError("Ya existe una cuenta usando este Email");
+                    return RedirectToAction("Ingresar", "Cuenta");
+                }
+            }
+            Utils.UIWarnings.SetError("Campos invalidos");
+            return RedirectToAction("Ingresar", "Cuenta");
+
         }
     }
 }

@@ -28,10 +28,10 @@ var loadMap = function (id) {
             marker = L.marker([e.latitude, e.longitude]).bindPopup('Mi ubicacion actual');
             console.log(e.latitude);
             console.log(e.longitude);
-            var long = document.getElementById('in_longitud');
+            var long = document.getElementById('Longitud');
             long.value = e.longitude
             
-            var lati = document.getElementById('in_latitud');
+            var lati = document.getElementById('Latitud');
             lati.value = e.latitude;
             circle = L.circle([e.latitude, e.longitude], e.accuracy / 2, {
                 weight: 1,
@@ -47,14 +47,13 @@ var loadMap = function (id) {
            alert("Location access denied.");
        });
     
-
-
+    
     map.on('click', function (e) {
         var popLocation = e.latlng;
-        var long = document.getElementById('in_longitud');
+        var long = document.getElementById('Longitud');
         long.value = popLocation.lng;
 
-        var lati = document.getElementById('in_latitud');
+        var lati = document.getElementById('Latitud');
         lati.value = popLocation.lat;
         console.log(marker);
         if (marker && circle) {

@@ -52,7 +52,7 @@ namespace Proyecto_Integracion.Models
             }
             return false;
         }
-        public bool Seleccionar(Int64 ID)
+        public bool Seleccionar(Int64 Id)
         {
             try
             {

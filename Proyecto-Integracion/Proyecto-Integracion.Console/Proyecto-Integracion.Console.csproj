@@ -54,6 +54,10 @@
       <Project>{76f050fe-11d6-4ff0-8d8a-9c316901e97a}</Project>
       <Name>Proyecto-Integracion.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Proyecto-Integracion.WebApp\Proyecto-Integracion.WebApp.csproj">
+      <Project>{60f858b9-4312-4754-9423-9d9d208e3d87}</Project>
+      <Name>Proyecto-Integracion.WebApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
