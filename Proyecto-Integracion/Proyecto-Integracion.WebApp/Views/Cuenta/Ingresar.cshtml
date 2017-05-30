@@ -15,8 +15,6 @@
         </div>
         <div class="panel-body">
             <!--<form class="form-horizontal">-->
-            @using (Html.BeginForm("Ingresar", "Cuenta", FormMethod.Post))
-            {
                 <div class="row">
                     <div class="form-group text-center">
                         <label for="inputEmail3" class="col-sm-2 control-label input-lg letra-prompt">Email</label>
@@ -36,10 +34,9 @@
                 <p class="form-group text-center"><a class="letra-prompt" data-toggle="modal" data-target="#modal-contraseña"><i class="fa fa-lock" arian-hidden="true"></i> ¿Olvidaste tu contraseña?</a></p>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success btn-lg letra-prompt pull-right">Ingresar</button>
+                        <button type="submit" class="btn btn-primary btn-lg letra-prompt pull-right">Ingresar</button>
                     </div>
                 </div>
-            }
             <!--</form>-->
         </div>
         <div class="panel-footer">
@@ -60,22 +57,21 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title letra-prompt">Recuperar contraseña</h4>
             </div>
-            <div class="modal-body">
-                <h3 class="letra-prompt text-center">Escribe tu email para recuperar tu contraseña</h3>
-                <form class="form-horizontal">
-                    <div class="form-group text-center">
-                        <label for="inputEmail3" class="col-sm-2 control-label input-lg letra-prompt">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control input-lg" id="inputEmail3" placeholder="Email">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <input class="btn btn-success btn-lg letra-prompt" value="Aceptar" type="submit" />
-                <button type="button" class="btn btn-danger btn-lg letra-prompt" data-dismiss="modal">Cancelar</button>
-            </div>
+            @using (Html.BeginForm("OlvidePassword", "Cuenta", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <p>Ingrese su correo de recuperación.</p>
 
+                    <div class="form-group">
+                        <label for="Email">Email:</label>
+                        <input class="form-control" name="Email" placeholder="Su Email" maxlength="80" type="text" value="" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary" value="Recuperar" type="submit" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>  
+            }
         </div>
     </div>
 </div>

@@ -156,6 +156,7 @@
     <Content Include="Contents\js\jquery-3.1.1.min.js" />
     <Content Include="Contents\js\jquery-ui.js" />
     <Content Include="Contents\js\leaflet.js" />
+    <Content Include="Contents\js\MovingMarker.js" />
     <Content Include="Contents\js\npm.js" />
     <Content Include="Contents\js\pagination.min.js" />
     <Content Include="Global.asax" />

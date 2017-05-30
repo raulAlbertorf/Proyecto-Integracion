@@ -52,5 +52,13 @@ namespace Proyecto_Integracion.WebApp.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Crear(FormCollection collection)
+        {
+            var hola = Request.Form["Email"];
+            var hola2 = Request.Form["in_longitud"];
+            return RedirectToAction("Index","Home");
+        }
     }
 }

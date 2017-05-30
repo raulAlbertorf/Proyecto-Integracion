@@ -20,52 +20,48 @@
             <div class="panel-heading">
                 <h3 class="panel-title letra-prompt">Registrar</h3>
             </div>
-            <div class="panel-body">
-                <form class="form-horizontal">
-                    <div class="form-group text-center">
-                        <label for="inputEmail3" class="col-sm-2 control-label input-lg letra-prompt">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+            @using (Html.BeginForm("Crear", "Cuenta", FormMethod.Post))
+            {
+                <div class="panel-body">
+                    <!--<form class="form-horizontal">-->
+                    <div class="form-group">
+                        <label for="Email" class="letra-prompt">Email</label>
+                        <input type="email" name="Email" class="form-control input-lg" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="Contrasena" class="letra-prompt">Contraseña</label>
+                        <input type="password" name="Contrasena" class="form-control input-lg" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre" class="letra-prompt">Nombre</label>
+                        <input type="text" name="Nombre" class="form-control input-lg" placeholder="Juan Perez">
+                    </div>
+                    <div class="form-group">
+                        <label for="Latitude" class="letra-prompt">Latitude</label>
+                        <!--<p id="in_latitud"></p>-->
+                        <input type="text" name="in_latitud" id="in_latitud" class="form-control input-lg" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="Longitud" class="letra-prompt">Longitud</label>
+                        <input type="text" name="in_longitud" id="in_longitud" class="form-control input-lg" disabled>
+                    </div>
+
+                    <!--</form>-->
+                    <div class="form-group">
+                        <div class="panel panel-default mapa-mi-ubicacion">
+                            <div class="panel-heading">
+                                <h3 class="panel-title letra-prompt">Mi Ubicación</h3>
+                            </div>
+                            <div class="panel-body" id="map">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group text-center">
-                        <label for="inputPassword3" class="col-sm-2 control-label input-lg letra-prompt">Contraseña</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Contraseña">
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <label for="inputNOmbre3" class="col-sm-2 control-label input-lg letra-prompt">Nombre</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control input-lg" id="inputNombre3" placeholder="Juan Perez">
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <label for="inputNOmbre3" class="col-sm-2 control-label input-lg letra-prompt">Latitude</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control input-lg" id="inLatitud">
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <label for="inputNOmbre3" class="col-sm-2 control-label input-lg letra-prompt">Longitud</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control input-lg" id="inLongitud">
-                        </div>
-                    </div>
-                </form>
-                <div class="panel panel-default mapa-mi-ubicacion">
-                    <div class="panel-heading">
-                        <h3 class="panel-title letra-prompt">Mi Ubicación</h3>
-                    </div>
-                    <div class="panel-body" id="map">
+                    <div class="panel-footer text-right">
+                        <input class="btn btn-primary" value="Registrame" type="submit" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
-            </div>
-            <div class="panel-footer pull-right">
-                <input class="btn btn-success btn-lg letra-prompt" value="Registrame" type="submit" />
-                <button type="button" class="btn btn-danger btn-lg letra-prompt" data-dismiss="modal">Cancelar</button>
-            </div>
+            }
         </div>
     </div>
 </div>
-
