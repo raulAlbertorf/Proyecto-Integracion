@@ -16,7 +16,7 @@ namespace Proyecto_Integracion.Console
             p.Seleccionar(1);
             Ubicacion ubicacion = new Ubicacion();
             ubicacion.Seleccionar(1);
-            var u = Proyecto_Integracion.WebApp.Utils.GeoLocation.ciudad(ubicacion);
+            var u = Proyecto_Integracion.WebApp.Utils.GeoLocation.direccion(ubicacion);
             //p.Seleccionar("email1@correo.com");
         }
     }

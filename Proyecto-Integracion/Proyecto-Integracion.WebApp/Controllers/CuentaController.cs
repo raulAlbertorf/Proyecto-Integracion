@@ -63,14 +63,18 @@ namespace Proyecto_Integracion.WebApp.Controllers
                     Utils.SessionManager.Ingresar(c.Email);
                     p.Cuenta = c;
                     p.UrlImagen = "PICON_029.png"; //imagen por default
-                    //p.Ubicacion = Utils.GeoLocation.ciudad();
-                    p.Crear();
-                    Utils.SessionManager.RegistarPerfil(p.Id);
+                    u.Direccion = Utils.GeoLocation.direccion(u);
+                    if (u.Crear())
+                    {
+                        p.Ubicacion = u;
+                        p.Crear();
+                        Utils.SessionManager.RegistarPerfil(p.Id);
 
-                    String body = "Hola,<br> Bienvenido a Libromatico,<br> Esperamos que pronto puedas comenzar a compartir o leer nuevos libros<br><br>Saludos";
+                        //String body = "Hola,<br> Bienvenido a Libromatico,<br> Esperamos que pronto puedas comenzar a compartir o leer nuevos libros<br><br>Saludos";
 
-                    Utils.Email.SendEmail("Bienvenido a Libromatico", c.Email, body);
-                    return RedirectToAction("Index", "Home");
+                        //Utils.Email.SendEmail("Bienvenido a Libromatico", c.Email, body);
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {

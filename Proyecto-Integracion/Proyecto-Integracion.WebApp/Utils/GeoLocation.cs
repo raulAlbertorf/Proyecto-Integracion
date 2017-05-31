@@ -33,10 +33,10 @@ namespace Proyecto_Integracion.WebApp.Utils
             DataRow row = getDataRow( u );
             try
             {
-                var value = row[ "formatted_address" ].ToString( );
-                //var count = value.Length;
+                var value = row[ "formatted_address" ].ToString( ).Split( ',' );
+                var count = value.Length;
 
-                return value;
+                return value[ count - 3 ];
             }
             catch ( Exception ex )
             {

@@ -13,10 +13,10 @@ namespace Proyecto_Integracion.Models
         public Int64 Id { get; set; }
         public float Latitud { get; set; }
         public float Longitud { get; set; }
-        public string Delegacion { get; set; }
+        public string Direccion { get; set; }
         public Int32 CodigoPostal { get; set; }
 
-        public List<Ubicacion> Seleciconar(string delegacion)
+        public List<Ubicacion> Seleciconar(string direccion)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace Proyecto_Integracion.Models
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inLatitude", Direction = System.Data.ParameterDirection.Input, Value = this.Latitud });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inLongitude", Direction = System.Data.ParameterDirection.Input, Value = this.Longitud });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "outId", Direction = System.Data.ParameterDirection.Output });
-                command.Parameters.Add(new MySqlParameter() { ParameterName = "inDelegacion", Direction = System.Data.ParameterDirection.Input, Value = this.Delegacion });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inDelegacion", Direction = System.Data.ParameterDirection.Input, Value = this.Direccion });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inCodigoPostal", Direction = System.Data.ParameterDirection.Input, Value = this.CodigoPostal });
                 var temp = DB.QueryCommand(command);
                 if (temp == 1)
@@ -83,7 +83,7 @@ namespace Proyecto_Integracion.Models
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inLatitude", Direction = System.Data.ParameterDirection.Input, Value = this.Latitud });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inLongitude", Direction = System.Data.ParameterDirection.Input, Value = this.Longitud });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inId", Direction = System.Data.ParameterDirection.Input, Value = this.Id });
-                command.Parameters.Add(new MySqlParameter() { ParameterName = "inDelegacion", Direction = System.Data.ParameterDirection.Input, Value = this.Delegacion });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inDelegacion", Direction = System.Data.ParameterDirection.Input, Value = this.Direccion });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inCodigoPostal", Direction = System.Data.ParameterDirection.Input, Value = this.CodigoPostal });
 
                 var temp = DB.QueryCommand(command);
@@ -127,7 +127,7 @@ namespace Proyecto_Integracion.Models
             var longitud = Convert.ToDouble( dr[ "Longitude" ] ).ToString( System.Globalization.CultureInfo.InvariantCulture );
             this.Latitud = float.Parse( latitud , System.Globalization.CultureInfo.InvariantCulture );
             this.Longitud = float.Parse( longitud , System.Globalization.CultureInfo.InvariantCulture );
-            this.Delegacion = dr["Delegacion"].ToString();
+            this.Direccion = dr["Delegacion"].ToString();
             this.CodigoPostal = Convert.ToInt32(dr["CodigoPostal"]);
         }
     }
