@@ -128,7 +128,7 @@
     <Content Include="Contents\css\font-awesome\font-awesome.min.css" />
     <Content Include="Contents\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Contents\css\Google-Maps.css" />
+    <Content Include="Contents\css\Maps.css" />
     <Content Include="Contents\css\index.css" />
     <Content Include="Contents\css\Crear_Cuenta.css" />
     <Content Include="Contents\css\layout.css" />
@@ -157,6 +157,7 @@
     <Content Include="Contents\js\imagen.js" />
     <Content Include="Contents\js\map-visualizar.js" />
     <Content Include="Contents\js\maps-index.js" />
+    <Content Include="Contents\js\maps-modificar.js" />
     <Content Include="Contents\js\maps-registrar.js" />
     <Content Include="Contents\js\jquery-3.1.1.min.js" />
     <Content Include="Contents\js\jquery-ui.js" />

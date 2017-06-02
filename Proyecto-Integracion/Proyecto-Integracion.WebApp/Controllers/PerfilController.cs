@@ -71,13 +71,37 @@ namespace Proyecto_Integracion.WebApp.Controllers
         }
 
         //GET:Modificar
-        public ActionResult Modificar()
+        public ActionResult Modificar(long Id)
         {
-            if(Utils.SessionManager.CuentaActiva() !=null && Utils.SessionManager.PerfilActivo() != null)
+           
+            if(Utils.SessionManager.CuentaActiva() !=null && Utils.SessionManager.PerfilActivo() != null && Utils.SessionManager.PerfilActivo().Id == Id)
             {
-                return View();
+                Perfil p = new Perfil();
+                p.Seleccionar(Id);
+                return View(p);
             }
             return RedirectToAction("Index","Home");
+        }
+
+        [HttpPost]
+        public ActionResult Modificar(Perfil p, Ubicacion u)
+        {
+            if (!Utils.Validator.isNullOrEmptyOrWhiteSpace(new List<String>() { p.Nombre, Convert.ToString(u.Latitud), Convert.ToString(u.Longitud) }))
+            {
+                p.Seleccionar(p.Id);
+                p.Ubicacion.Latitud = u.Latitud;
+                p.Ubicacion.Longitud = u.Longitud;
+                p.Ubicacion.Direccion = Utils.GeoLocation.direccion(p.Ubicacion);
+                if (p.Modificar() && p.Ubicacion.Modificar())
+                {
+                    return RedirectToAction("Detalles", "Perfil", new { Id = p.Id });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
     }
 }
