@@ -21,14 +21,14 @@ namespace Proyecto_Integracion.Models
             throw new System.NotImplementedException();
         }
 
-        public bool ModificarImagen(string nuevaUrl)
+        public bool ModificarImagen()
         {
             try
             {
                 var command = new MySqlCommand() { CommandText = "sp_perfil_modificar", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inId", Direction = System.Data.ParameterDirection.Input, Value = this.Id });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inNombre", Direction = System.Data.ParameterDirection.Input, Value = this.Nombre });
-                command.Parameters.Add(new MySqlParameter() { ParameterName = "inUrl", Direction = System.Data.ParameterDirection.Input, Value = nuevaUrl });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inUrl", Direction = System.Data.ParameterDirection.Input, Value = this.UrlImagen });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inEmail", Direction = System.Data.ParameterDirection.Input, Value = this.Cuenta.Email });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inUbicacion", Direction = System.Data.ParameterDirection.Input, Value = this.Ubicacion.Id });
                 var temp = DB.QueryCommand(command);

@@ -11,7 +11,7 @@ namespace Proyecto_Integracion.WebApp.Utils
         {
             using (MailMessage mm = new MailMessage())
             {
-                mm.From = new MailAddress("noreplyreortit@gmail.com");
+                mm.From = new MailAddress("noreplyreportit@gmail.com");
                 mm.Subject = Subject;
                 mm.Body = Message;
                 mm.IsBodyHtml = true;

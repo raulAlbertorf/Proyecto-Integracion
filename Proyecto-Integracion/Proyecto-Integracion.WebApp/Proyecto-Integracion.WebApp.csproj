@@ -123,6 +123,7 @@
     <Content Include="Contents\css\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Contents\css\bootstrap\bootstrap.css" />
     <Content Include="Contents\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Contents\css\detalles-perfil.css" />
     <Content Include="Contents\css\font-awesome\font-awesome.css" />
     <Content Include="Contents\css\font-awesome\font-awesome.min.css" />
     <Content Include="Contents\css\fonts\fontawesome-webfont.svg" />
@@ -151,8 +152,12 @@
     <Content Include="Contents\js\bootstrap.js" />
     <Content Include="Contents\js\bootstrap.min.js" />
     <Content Include="Contents\js\countCharacters.js" />
+    <Content Include="Contents\css\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Contents\js\jquery-1.10.2.intellisense.js" />
-    <Content Include="Contents\js\maps.js" />
+    <Content Include="Contents\js\imagen.js" />
+    <Content Include="Contents\js\map-visualizar.js" />
+    <Content Include="Contents\js\maps-index.js" />
+    <Content Include="Contents\js\maps-registrar.js" />
     <Content Include="Contents\js\jquery-3.1.1.min.js" />
     <Content Include="Contents\js\jquery-ui.js" />
     <Content Include="Contents\js\leaflet.js" />
@@ -173,6 +178,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,6 +209,9 @@
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Contents\js\bootstrap-select.js.map" />
+    <Content Include="Views\Cuenta\CambiarPassword.cshtml" />
+    <Content Include="Views\Perfil\Detalles.cshtml" />
+    <Content Include="Views\Perfil\Modificar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

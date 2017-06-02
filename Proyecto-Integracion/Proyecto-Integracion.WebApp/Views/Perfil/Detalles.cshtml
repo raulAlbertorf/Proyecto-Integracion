@@ -1,0 +1,101 @@
+﻿@model Proyecto_Integracion.Models.Perfil
+@{
+    Layout = "~/Views/_Layout.cshtml";
+    var Perfil_Activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
+    var Cuenta_Activa = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
+}
+@section Styles{
+    <link href="~/Contents/css/detalles-perfil.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/Contents/js/map-visualizar.js" type="text/javascript"></script>
+    <script src="~/Contents/js/imagen.js"></script>
+}
+
+
+<div class="container">
+    <div class="col-md-3">
+        <div class="thumbnail text-center">
+            <img src="~/Contents/img/perfiles/@Perfil_Activo.UrlImagen" alt="Imagen perfil">
+            @if (Perfil_Activo.Id == Model.Id && Perfil_Activo != null && Cuenta_Activa != null)
+            {
+                <div class="caption">
+                    <a class="btn btn-success" data-toggle="modal" data-target="#Imagen">
+                        Módificar
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="panel panel-default panel-mis-datos">
+            <div class="panel-body">
+                <p><strong>Nombre:</strong>&nbsp;@Model.Nombre</p>
+                <p><strong>Dirección:</strong>&nbsp;@Model.Ubicacion.Direccion</p>
+                <input type="text" id="Latitud" value="@Model.Ubicacion.Latitud" hidden />
+                <input type="text" id="Longitud" value="@Model.Ubicacion.Longitud" hidden />
+            </div>
+            <div class="panel-footer panel-ubicacion-dettallesP" id="map"></div>
+        </div>
+    </div>
+    <div class="col-md-2 text-right">
+                <a class="btn btn-warning" href="@Url.Action("Modificar","Perfil")">
+                    Módificar
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <br />
+                <br />
+                <br />
+                <a class="btn btn-danger" href="@Url.Action("Eliminar", "Cuenta", new { Email = Cuenta_Activa.Email})">
+                    Eliminar&nbsp;&nbsp;
+                    <i class="glyphicon glyphicon-remove"></i>
+                </a>
+    </div>
+
+    
+</div>
+
+
+<div id="Imagen" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        @using (Html.BeginForm("CargarImagen", "Perfil", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+            <fieldset>
+                @Html.HiddenFor(Model => Model.Id)
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title text-center">Modificar Imagen</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="container-fluid">
+                                <label for="photo" class="col-xs-2">Imagen:</label>
+                                <div class="input-group  col-xs-10">
+                                    @*<label class="input-group-btn">
+                                            Abrir...
+                                            <input type="file" multiple="" id="photo" name="photo">
+                                        </label>*@
+                                    <input type="text" class="form-control input-sm filefield" placeholder="Url..." readonly="">
+                                    <span class="input-group-btn">
+                                        <label class="btn btn-warning btn-sm btn-file">
+                                            <span class="glyphicon glyphicon-camera"></span> Abrir
+                                            <input type="file" style="display: none;" id="photo" name="photo">
+                                        </label>
+                                    </span>
+                                </div>
+                                <br />
+                                <br />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Modificar" class="btn btn-success" />
+                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

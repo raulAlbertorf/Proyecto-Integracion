@@ -15,6 +15,13 @@ https://www.goplaceit.com/
 //Buscadores Ejemplos
 http://www.inmuebles24.com/
 
+//LEAFLET********
+//Plugins
+https://mappinggis.com/2014/06/mejores-plugins-para-leaflet/
+
+//Aun no se de que me sirva
+http://maptimeboston.github.io/leaflet-intro/
+
 
 //google maps for asp.net C#
 

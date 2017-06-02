@@ -1,6 +1,6 @@
 ﻿@{
     var cuenta_activa = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
-    var perfil_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
+    var Perfil_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
 }
 
 
@@ -36,18 +36,19 @@
                 @{
                     if (cuenta_activa != null)
                     {
-                        if (perfil_activo != null)
+                        if (Perfil_activo != null)
                         {
                             <li><a class="texto-naranja letra-prompt nuevo_reporte" href="#">Nuevo</a></li>
                             <li>
                                 <a class="texto-naranja letra-prompt dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">
                                     <span class="fa fa-user"></span>
-                                    <strong> @perfil_activo.Nombre</strong>
+                                    <strong> @Perfil_activo.Nombre</strong>
                                     <span class="caret texto-naranja"></span>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="">Mi Perfil</a></li>
+                                        <li><a href="@Url.Action("Detalles","Perfil",new { Id = Perfil_activo.Id})">Mi Perfil</a></li>
                                         <li><a href="#">Mis Reportes</a></li>
                                         <li role="separator" class="divider"></li>
+                                        <li><a href="@Url.Action("CambiarPassword","Cuenta")">Cambiar Contraseña</a></li>
                                         <li><a href="@Url.Action("Salir","Cuenta")">Salir</a></li>
                                     </ul>
                                 </a>
