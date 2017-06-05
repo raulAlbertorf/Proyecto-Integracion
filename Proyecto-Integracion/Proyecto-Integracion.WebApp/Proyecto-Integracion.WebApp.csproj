@@ -180,6 +180,7 @@
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,6 +214,7 @@
     <Content Include="Views\Cuenta\CambiarPassword.cshtml" />
     <Content Include="Views\Perfil\Detalles.cshtml" />
     <Content Include="Views\Perfil\Modificar.cshtml" />
+    <Content Include="Views\Reporte\Crear.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

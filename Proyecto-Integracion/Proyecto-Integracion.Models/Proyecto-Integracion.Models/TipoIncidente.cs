@@ -30,5 +30,20 @@ namespace Proyecto_Integracion.Models
         Voilacion,
         [Display(Name = "Lesiones por arma de fuego")]
         Lesiones_Arma_Fuego
+
+        //[Display(Name = "Cancelado")]
+        //Cancelado,
+
+        //[Display(Name = "Solicitado")]
+        //Solicitado,
+
+        //[Display(Name = "Aceptado")]
+        //Aceptado,
+
+        //[Display(Name = "En Transito")]
+        //EnTransito,
+
+        //[Display(Name = "Entregado")]
+        //Entregado
     }
 }
