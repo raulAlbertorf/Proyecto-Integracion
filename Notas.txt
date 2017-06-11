@@ -39,3 +39,9 @@ https://console.developers.google.com/apis/credentials/wizard?api=maps-backend.g
 5579 1001 3430 8103
 08/20
 920
+
+
+@Html.EnumDropDownListFor(model => model.WelcomeMessageType, null, new { @id = "ddlMessageType", @class = "form-control", @style = "width:200px;" })
+
+
+@Html.DropDownList("Estado", new SelectList(Enum.GetValues(typeof(Proyecto_Integracion.Models.TipoIncidente)), "Display"), new { @class = "form-contr

@@ -1,0 +1,85 @@
+﻿@model Proyecto_Integracion.Models.Reporte
+@{
+    Layout = "~/Views/_Layout.cshtml";
+    var Perfil_Activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
+}
+
+@section Styles{
+    <link href="~/Contents/css/Maps.css" rel="stylesheet" />
+    <link href="~/Contents/css/detalles-reporte.css" rel="stylesheet" />
+
+}
+
+@section Scripts{
+    <script src="~/Contents/js/maps-modificar.js"></script>
+    <script src="~/Contents/js/calendario.js"></script>
+}
+
+<div class="container">
+    <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Modificar Reporte</h4>
+            </div>
+            <!--<form class="form-horizontal">-->
+            @using (Html.BeginForm("Modificar", "Reporte", FormMethod.Post))
+            {
+                <fieldset>
+                    @Html.HiddenFor(Model => Model.Id)
+                    @Html.HiddenFor(Model => Model.FechaExpedicion)
+                    @Html.HiddenFor(Model => Model.Perfil.Id)
+                    @Html.HiddenFor(Model => Model.Perfil.Nombre)
+                    @Html.HiddenFor(Model => Model.Perfil.UrlImagen)
+                    @Html.HiddenFor(Model => Model.Perfil.Ubicacion)
+                    @Html.HiddenFor(Model => Model.Perfil.Cuenta)
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="FechaExpedicion" class="letra-prompt">Fecha</label>
+                            @Html.TextBoxFor(Model => Model.FechaExpedicion, "{0:MM/dd/yyyy}", new { @type = "text", @id = "datepicker", @value = Model.FechaExpedicion })
+                            <input type="text" name="FechaExpedicion" id="FechaExpedicion" hidden>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Descripcion" class="letra-prompt">Descripción</label>
+                            @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control textarea", @id = "Resumen", maxlength = "255", @value = Model.Descripcion })
+                        </div>
+                        <div class="form-group">
+                            <label for="Incidente" class="letra-prompt">Tipo de incidente</label>
+                            @{
+                                var incidentes = Proyecto_Integracion.WebApp.Utils.Enums.EnumToSelectList<Proyecto_Integracion.Models.TipoIncidente>();
+                                @Html.DropDownList("Incidente", incidentes)
+                            }
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Latitud" id="Latitud" value="@Model.Ubicacion.Latitud">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Longitud" id="Longitud" value="@Model.Ubicacion.Longitud">
+                        </div>
+
+                        <!--</form>-->
+                        <div class="form-group">
+                            <div class="panel panel-default mapa-ubicacion_reporte">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title letra-prompt">
+                                        Ubicación del incidente
+                                    </h3>
+                                </div>
+                                <div class="panel-body" id="map">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div class="panel-footer text-right">
+                        <input class="btn btn-primary" value="Modificar" type="submit" />
+                        <a href="@Url.Action("Detalles", "Perfil", new { Id = Model.Perfil.Id})" type="button" class="btn btn-danger" >Cancelar</a>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+    
+</div>

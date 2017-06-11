@@ -13,7 +13,8 @@ namespace Proyecto_Integracion.Console
         static void Main(string[] args)
         {
             Perfil p = new Perfil();
-            p.Seleccionar(1);
+            p.Seleccionar(7);
+            var reportes = p.MisReportes();
             Ubicacion ubicacion = new Ubicacion();
             ubicacion.Seleccionar(1);
             var u = Proyecto_Integracion.WebApp.Utils.GeoLocation.direccion(ubicacion);

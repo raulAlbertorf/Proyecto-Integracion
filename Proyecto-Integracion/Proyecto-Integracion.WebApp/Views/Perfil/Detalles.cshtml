@@ -40,20 +40,51 @@
         </div>
     </div>
     <div class="col-md-2 text-right">
-                <a class="btn btn-warning" href="@Url.Action("Modificar","Perfil", new { Id = Model.Id})">
-                    Módificar
-                    <i class="glyphicon glyphicon-pencil"></i>
-                </a>
-                <br />
-                <br />
-                <br />
-                <a class="btn btn-danger" href="@Url.Action("Eliminar", "Cuenta", new { Email = Cuenta_Activa.Email})">
-                    Eliminar&nbsp;&nbsp;
-                    <i class="glyphicon glyphicon-remove"></i>
-                </a>
+        <a class="btn btn-warning" href="@Url.Action("Modificar","Perfil", new { Id = Model.Id})">
+            Módificar
+            <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+        <br />
+        <br />
+        <br />
+        <a class="btn btn-danger" href="@Url.Action("Eliminar", "Cuenta", new { Email = Cuenta_Activa.Email})">
+            Eliminar&nbsp;&nbsp;
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
     </div>
 
-    
+    <!--Mis ultimos reportes-->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"> Mis últimos reportes</h4>
+            </div>
+            <div class="panel-body" style="flex-shrink">
+                @{
+                    var mis_reportes = Model.MisReportes();
+                    foreach (var reporte in mis_reportes)
+                    {
+                        <div class="col-md-6">
+                                <div class="media thumbnail">
+                                    <div class="media-left media-middle">
+                                        <a href="@Url.Action("Detalles", "Reporte", new { Id = reporte.Id})">
+                                            <i class="fa fa-map-marker fa-3x texto-naranja" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="media-body text-justify">
+                                        <h4 class="media-heading">@reporte.Incidente</h4>
+                                        <p>@reporte.Descripcion</p>
+                                        <p>@reporte.FechaExpedicion</p>
+                                        <p>@reporte.Ubicacion.Direccion</p>
+                                    </div>
+                                </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

@@ -18,7 +18,39 @@ namespace Proyecto_Integracion.Models
 
         public List<Reporte> MisReportes()
         {
-            throw new System.NotImplementedException();
+            List<Reporte> reportes = new List<Reporte>();
+            try
+            {
+                var command = new MySqlCommand() { CommandText = "sp_reporte_seleccionar_perfil", CommandType = System.Data.CommandType.StoredProcedure };
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inId_perfil", Direction = System.Data.ParameterDirection.Input, Value = this.Id });
+                var datos = DB.GetDataSet(command);
+
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < datos.Tables[0].Rows.Count; i++)
+                    {
+                        Reporte reporte = new Reporte();
+                        reporte.Id = (Convert.ToInt64(datos.Tables[0].Rows[i]["Id"]));
+                        reporte.Descripcion = (datos.Tables[0].Rows[i]["Descripcion"].ToString());
+                        reporte.FechaExpedicion = Convert.ToDateTime(datos.Tables[0].Rows[i]["Fecha"]);
+                        reporte.Incidente = (TipoIncidente)(Convert.ToInt16(datos.Tables[0].Rows[i]["Incidente"]));
+                        reporte.Perfil = this;
+                        var id_u = Convert.ToInt64(datos.Tables[0].Rows[i]["Ubicacion_Id"]);
+                        Ubicacion u = new Ubicacion();
+                        u.Seleccionar(id_u);
+                        reporte.Ubicacion = u;
+                        reportes.Add(reporte);
+                    }
+                    return reportes;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+            }
+            return reportes;
         }
 
         public bool ModificarImagen()

@@ -6,7 +6,9 @@ CREATE PROCEDURE sp_reporte_seleccionar(
 	inId BIGINT
 )
 BEGIN
-	SELECT 	Perfil_Id, 
+	SELECT 	
+			Id,
+			Perfil_Id, 
 			Fecha,
 			Incidente,
             Descripcion,

@@ -52,9 +52,9 @@ namespace Proyecto_Integracion.Models
             try
             {
                 var command = new MySqlCommand() { CommandText = "sp_reporte_seleccionar", CommandType = System.Data.CommandType.StoredProcedure };
-                command.Parameters.Add(new MySqlParameter() { ParameterName = "inId", Direction = System.Data.ParameterDirection.Input, Value = this.Id });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inId", Direction = System.Data.ParameterDirection.Input, Value = ID });
                 var datos = DB.GetDataSet(command);
-                if (datos.Tables[0].Rows.Count > 1)
+                if (datos.Tables[0].Rows.Count == 1)
                 {
                     this.SetDesde(datos.Tables[0].Rows[0]);
                     return true;
