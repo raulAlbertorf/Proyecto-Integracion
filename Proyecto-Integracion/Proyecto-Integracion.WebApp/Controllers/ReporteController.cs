@@ -40,9 +40,15 @@ namespace Proyecto_Integracion.WebApp.Controllers
                     r.Perfil = perfil_Activo;
                     r.Ubicacion = u;
                     if (r.Crear())
+                    {
+                        Utils.UIWarnings.SetError("Reporte creado exitosamente");
                         return RedirectToAction("Detalles", "Perfil", new { Id = perfil_Activo.Id });
+                    }
                     else
+                    {
+                        Utils.UIWarnings.SetError("El reporte no pudo ser creado");
                         return RedirectToAction("Index", "Home");
+                    }
 
                 }
 
@@ -63,7 +69,11 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 }
             }
             else
-                return RedirectToAction("Index","Home");
+            {
+                Utils.UIWarnings.SetError("No tiene permisos para modificar este reporte");
+                return RedirectToAction("Index", "Home");
+            }
+                
             return RedirectToAction("Index", "Home");
 
         }
@@ -71,7 +81,36 @@ namespace Proyecto_Integracion.WebApp.Controllers
         [HttpPost]
         public ActionResult Modificar(Reporte r, Ubicacion u)
         {
+            u.Direccion = Utils.GeoLocation.direccion(u);
+            u.Modificar();
+            r.Ubicacion = u;
+            if (r.Modificar())
+            {
+                Utils.UIWarnings.SetInfo("Modificación de reporte exitosa");
+                return RedirectToAction("Detalles", "Reporte", new { Id = r.Id});
+            }
+            Utils.UIWarnings.SetError("No se pudo realizar las modificaciones del reporte");
             return RedirectToAction("Index","Home");
         }
+
+        public ActionResult Eliminar(long Id)
+        {
+            var Perfil_activo = Utils.SessionManager.PerfilActivo();
+            Reporte r = new Reporte();
+            r.Seleccionar(Id);
+            if(Perfil_activo != null && Utils.SessionManager.CuentaActiva() !=  null && Perfil_activo.Id == r.Perfil.Id)
+            {
+                r.Eliminar();
+                Utils.UIWarnings.SetInfo("Eliminacion exitosa del reporte");
+                return RedirectToAction("Detalles", "Perfil", new { Id = Perfil_activo.Id });
+            }
+            else
+            {
+                Utils.UIWarnings.SetError("No tiene los permisos necesarios");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+
     }
 }

@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="FechaExpedicion" class="letra-prompt">Fecha</label>
                             @Html.TextBoxFor(Model => Model.FechaExpedicion, "{0:MM/dd/yyyy}", new { @type = "text", @id = "datepicker", @value = Model.FechaExpedicion })
-                            <input type="text" name="FechaExpedicion" id="FechaExpedicion" hidden>
+                            <input type="text" name="FechaExpedicion" id="FechaExpedicion">
                         </div>
 
                         <div class="form-group">
@@ -47,7 +47,7 @@
                             <label for="Incidente" class="letra-prompt">Tipo de incidente</label>
                             @{
                                 var incidentes = Proyecto_Integracion.WebApp.Utils.Enums.EnumToSelectList<Proyecto_Integracion.Models.TipoIncidente>();
-                                @Html.DropDownList("Incidente", incidentes)
+                                @Html.DropDownList("Incidente", incidentes, new { @class="form-control"})
                             }
                         </div>
                         <div class="form-group">

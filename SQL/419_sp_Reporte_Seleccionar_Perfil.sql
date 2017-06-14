@@ -17,6 +17,7 @@ BEGIN
 	FROM 
 		Reporte 
 	WHERE 
-		inId_perfil = Perfil_Id;
+		inId_perfil = Perfil_Id
+	ORDER BY Id DESC;
 END
 $$

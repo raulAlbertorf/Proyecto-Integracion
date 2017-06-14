@@ -76,6 +76,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\..\..\Chile\Construcción y validación\Proyecto\trunk\LibroMatico\Libros.WebApp\bin\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\..\..\Chile\Construcción y validación\Proyecto\trunk\LibroMatico\Libros.WebApp\bin\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -137,6 +143,7 @@
     <Content Include="Contents\css\Crear_Cuenta.css" />
     <Content Include="Contents\css\layout.css" />
     <Content Include="Contents\css\leaflet\leaflet.css" />
+    <Content Include="Contents\css\Mis-Reportes.css" />
     <Content Include="Contents\css\perfil.css" />
     <Content Include="Contents\img\about\ruben.jpg" />
     <Content Include="Contents\img\background\bg-pattern.jpg" />
@@ -175,7 +182,6 @@
     <Content Include="Contents\js\maps-registrar.js" />
     <Content Include="Contents\js\jquery-3.1.1.min.js" />
     <Content Include="Contents\js\leaflet.js" />
-    <Content Include="Contents\js\MovingMarker.js" />
     <Content Include="Contents\js\npm.js" />
     <Content Include="Contents\js\pagination.min.js" />
     <Content Include="Global.asax" />
@@ -231,6 +237,8 @@
     <Content Include="Views\Reporte\Crear.cshtml" />
     <Content Include="Views\Reporte\Modificar.cshtml" />
     <Content Include="Views\Reporte\Detalles.cshtml" />
+    <Content Include="Views\Shared\_NotificacionesModal.cshtml" />
+    <Content Include="Views\Perfil\MisReportes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

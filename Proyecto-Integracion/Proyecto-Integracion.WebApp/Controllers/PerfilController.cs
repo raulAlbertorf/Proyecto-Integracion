@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Proyecto_Integracion.WebApp.Controllers
 {
@@ -94,14 +96,32 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 p.Ubicacion.Direccion = Utils.GeoLocation.direccion(p.Ubicacion);
                 if (p.Modificar() && p.Ubicacion.Modificar())
                 {
+                    Utils.UIWarnings.SetInfo("Módificacion dde perfil exitosa");
                     return RedirectToAction("Detalles", "Perfil", new { Id = p.Id });
                 }
             }
             else
             {
+                Utils.UIWarnings.SetError("No tiene los permisos para realizar modificaciones a este perfil");
                 return RedirectToAction("Index", "Home");
             }
             return View();
+        }
+
+        public ActionResult MisReportes(int? page, long Id)
+        {
+            Cuenta cuenta = Utils.SessionManager.CuentaActiva();
+            Perfil perfilActivo = Utils.SessionManager.PerfilActivo();
+            Perfil p = new Perfil();
+
+            if (cuenta != null && perfilActivo != null && p.Seleccionar(Id))
+            {
+               List<Proyecto_Integracion.Models.Reporte> items = p.MisReportes();
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+                return View(items.ToPagedList(pageNumber, pageSize));
+            }
+            return RedirectToAction("Ingresar", "Cuenta");
         }
     }
 }

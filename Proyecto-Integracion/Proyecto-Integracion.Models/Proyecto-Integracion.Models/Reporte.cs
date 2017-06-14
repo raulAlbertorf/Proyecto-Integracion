@@ -74,7 +74,7 @@ namespace Proyecto_Integracion.Models
         {
             try
             {
-                var command = new MySqlCommand() { CommandText = "sp_reporte_ modificar", CommandType = System.Data.CommandType.StoredProcedure };
+                var command = new MySqlCommand() { CommandText = "sp_reporte_modificar", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inId", Direction = System.Data.ParameterDirection.Input, Value = this.Id });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inPerfil_Id", Direction = System.Data.ParameterDirection.Input, Value = this.Perfil.Id });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inFecha", Direction = System.Data.ParameterDirection.Input, Value = this.FechaExpedicion });

@@ -46,7 +46,7 @@
                                     <span class="caret texto-naranja"></span>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li><a href="@Url.Action("Detalles","Perfil",new { Id = Perfil_activo.Id})">Mi Perfil</a></li>
-                                        <li><a href="#">Mis Reportes</a></li>
+                                        <li><a href="@Url.Action("MisReportes","Perfil", new { page = 1 ,Id = Perfil_activo.Id})">Mis Reportes</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="@Url.Action("CambiarPassword","Cuenta")">Cambiar Contraseña</a></li>
                                         <li><a href="@Url.Action("Salir","Cuenta")">Salir</a></li>
