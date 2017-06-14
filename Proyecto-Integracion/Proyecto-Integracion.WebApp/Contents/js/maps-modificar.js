@@ -5,7 +5,7 @@
     console.log(parseFloat(lati) + " " + parseFloat(long));
     var HELSINKI = [parseFloat(lati), parseFloat(long)];
     var map = L.map(id);
-    var marker = L.marker([parseFloat(lati), parseFloat(long)]).bindPopup('Estoy Aquí');
+    var marker = L.marker([parseFloat(lati), parseFloat(long)]).bindPopup('Ubicación actual');
     var circle = L.circle([parseFloat(lati), parseFloat(long)], {
         weight: 1,
         color: 'blue',
@@ -28,7 +28,6 @@
 
         var lati = document.getElementById('Latitud');
         lati.value = popLocation.lat;
-        console.log(marker);
         if (marker && circle) {
             marker.setLatLng([popLocation.lat, popLocation.lng]);
             circle.setLatLng([popLocation.lat, popLocation.lng]);
@@ -43,7 +42,7 @@
         }
         var popup = L.popup()
         .setLatLng(popLocation)
-        .setContent('<p>Tu estas aquí</p>')
+        .setContent('<p>Ubicación nueva</p>')
         .openOn(map);
     });
 };

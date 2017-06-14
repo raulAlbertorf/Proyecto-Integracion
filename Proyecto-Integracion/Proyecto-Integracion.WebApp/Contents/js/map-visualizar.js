@@ -4,7 +4,7 @@
     console.log(parseFloat(lati)+" "+parseFloat (long));
     var HELSINKI = [parseFloat(lati), parseFloat(long)];
     var map = L.map(id);
-    var marker = L.marker([parseFloat(lati), parseFloat(long)]).bindPopup('Estoy Aquí');
+    var marker = L.marker([parseFloat(lati), parseFloat(long)]).bindPopup('Ubicación actual');
     var circle = L.circle([parseFloat (lati),parseFloat (long)],{
         weight: 1,
         color: 'blue',

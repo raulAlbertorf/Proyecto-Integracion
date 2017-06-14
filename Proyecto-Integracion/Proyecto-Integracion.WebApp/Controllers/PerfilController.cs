@@ -90,7 +90,9 @@ namespace Proyecto_Integracion.WebApp.Controllers
         {
             if (!Utils.Validator.isNullOrEmptyOrWhiteSpace(new List<String>() { p.Nombre, Convert.ToString(u.Latitud), Convert.ToString(u.Longitud) }))
             {
+                var nombre = p.Nombre;
                 p.Seleccionar(p.Id);
+                p.Nombre = nombre;
                 p.Ubicacion.Latitud = u.Latitud;
                 p.Ubicacion.Longitud = u.Longitud;
                 p.Ubicacion.Direccion = Utils.GeoLocation.direccion(p.Ubicacion);

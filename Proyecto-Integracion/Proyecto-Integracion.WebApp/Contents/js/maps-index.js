@@ -11,7 +11,7 @@
     map.addLayer(layer);
     map.setView(HELSINKI, 19);
     console.log(id);
-    map.locate({ setView: true, watch: true }) /* This will return map so you can do chaining */
+    map.locate({ setView: true, watch: false }) /* This will return map so you can do chaining */
         .on('locationfound', function (e) {
             marker = L.marker([e.latitude, e.longitude]).bindPopup('Mi ubicacion actual');
             console.log(e.latitude);

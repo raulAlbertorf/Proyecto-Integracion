@@ -11,9 +11,9 @@
     map.addLayer(layer);
     map.setView(HELSINKI, 19);
 
-    map.locate({ setView: true, watch: true }) /* This will return map so you can do chaining */
+    map.locate({ setView: true, watch: false}) /* This will return map so you can do chaining */
         .on('locationfound', function (e) {
-            marker = L.marker([e.latitude, e.longitude]).bindPopup('Mi ubicacion actual');
+            marker = L.marker([e.latitude, e.longitude]).bindPopup('Ubicacion actual');
             console.log(e.latitude);
             console.log(e.longitude);
             var long = document.getElementById('Longitud');
@@ -58,7 +58,7 @@
         }
         var popup = L.popup()
         .setLatLng(popLocation)
-        .setContent('<p>Tu estas aquí</p>')
+        .setContent('<p>Ubicación nueva</p>')
         .openOn(map);
     });
 };
