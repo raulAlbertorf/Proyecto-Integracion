@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Proyecto_Integracion.WebApp.Utils;
+using System.Globalization;
 
 namespace Proyecto_Integracion.WebApp.Controllers
 {
@@ -28,8 +29,10 @@ namespace Proyecto_Integracion.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Crear(Reporte r, Ubicacion u)
+        public ActionResult Crear(Reporte r, Ubicacion u, FormCollection collection)
         {
+
+            string date = Request.Form["date"];
             var perfil_Activo = Utils.SessionManager.PerfilActivo();
             if (perfil_Activo != null && Utils.SessionManager.CuentaActiva() != null)
             {
@@ -38,6 +41,9 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 {
                     
                     r.Perfil = perfil_Activo;
+                    DateTime fecha;
+                    DateTime.TryParse(date, out fecha);
+                    r.FechaExpedicion = fecha;
                     r.Ubicacion = u;
                     if (r.Crear())
                     {
@@ -79,11 +85,15 @@ namespace Proyecto_Integracion.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Modificar(Reporte r, Ubicacion u)
+        public ActionResult Modificar(Reporte r, Ubicacion u, FormCollection collection)
         {
             u.Direccion = Utils.GeoLocation.direccion(u);
             u.Modificar();
             r.Ubicacion = u;
+            string date = Request.Form["date"];
+            DateTime fecha;
+            DateTime.TryParse(date, out fecha);
+            r.FechaExpedicion = fecha;
             if (r.Modificar())
             {
                 Utils.UIWarnings.SetInfo("Modificación de reporte exitosa");

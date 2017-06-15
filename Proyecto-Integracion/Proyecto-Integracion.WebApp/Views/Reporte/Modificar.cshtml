@@ -12,7 +12,11 @@
 
 @section Scripts{
     <script src="~/Contents/js/maps-modificar.js"></script>
-    <script src="~/Contents/js/calendario.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#date").datepicker();
+    });
+</script>
 }
 
 <div class="container">
@@ -35,8 +39,8 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="FechaExpedicion" class="letra-prompt">Fecha</label>
-                            @Html.TextBoxFor(Model => Model.FechaExpedicion, "{0:MM/dd/yyyy}", new { @type = "text", @id = "datepicker", @value = Model.FechaExpedicion })
-                            <input type="text" name="FechaExpedicion" id="FechaExpedicion">
+                            @Html.TextBox("date", @Model.FechaExpedicion, "{0:MM/dd/yyyy}", new { id = "date", @class = "form-control"} );
+                            <!--<input type="text" class="form-control" id="date" name="date" value="@Model.FechaExpedicion" />-->
                         </div>
 
                         <div class="form-group">
