@@ -26,7 +26,7 @@
         </div>
     </div>
 
-   
+
 
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -37,32 +37,35 @@
                 <div class="list-group text-right">
                     <label>Pagina @( Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</label>
                     @Html.PagedListPager(Model, page => Url.Action("MisReportes", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                    @{
-                        
-                        foreach (var reporte in Model)
-                        {
-                            <div class="col-md-6 reporte" style="display: flex; flex-wrap: wrap;">
-                                <a href="@Url.Action("Detalles", "Reporte", new { Id = reporte.Id})" class="list-group-item">
+                    <div class="row" style="display: flex; flex-wrap: wrap;">
+                        @{
 
-                                    <div class="media">
-                                        <div class="media-left media-middle">
-                                            <i class="fa fa-map-marker fa-3x texto-naranja" aria-hidden="true"></i>
+                            foreach (var reporte in Model)
+                            {
+                                <div class="col-md-6 reporte" style="display: flex; flex-wrap: wrap;">
+                                    <a href="@Url.Action("Detalles", "Reporte", new { Id = reporte.Id})" class="list-group-item">
+
+                                        <div class="media">
+                                            <div class="media-left media-middle">
+                                                <i class="fa fa-map-marker fa-3x texto-naranja" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body text-justify">
+                                                <h4 class="media-heading"><strong>Incidente: </strong>@reporte.Incidente</h4>
+                                                <p><strong>Descripción: </strong>@reporte.Descripcion</p>
+                                                <p><strong>Fecha: </strong> @reporte.FechaExpedicion.ToString("d")</p>
+                                                <p><strong>Dirección: </strong> @reporte.Ubicacion.Direccion</p>
+                                            </div>
                                         </div>
-                                        <div class="media-body text-justify">
-                                            <h4 class="media-heading"><strong>Incidente: </strong>@reporte.Incidente</h4>
-                                            <p><strong>Descripción: </strong>@reporte.Descripcion</p>
-                                            <p><strong>Fecha: </strong> @reporte.FechaExpedicion</p>
-                                            <p><strong>Dirección: </strong> @reporte.Ubicacion.Direccion</p>
-                                        </div>
-                                    </div>
 
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
 
+                            }
                         }
-                    }
-
+                    </div>
                 </div>
+
+
 
             </div>
         </div>

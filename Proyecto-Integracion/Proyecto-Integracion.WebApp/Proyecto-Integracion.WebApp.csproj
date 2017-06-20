@@ -82,6 +82,7 @@
     <Reference Include="PagedList.Mvc">
       <HintPath>..\..\..\Chile\Construcción y validación\Proyecto\trunk\LibroMatico\Libros.WebApp\bin\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Activities" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +133,7 @@
     <Content Include="Contents\css\bootstrap\datepicker.css" />
     <Content Include="Contents\css\bootstrap\jquery-ui.css" />
     <Content Include="Contents\css\Calendario.css" />
+    <Content Include="Contents\css\datepicker.css" />
     <Content Include="Contents\css\detalles-perfil.css" />
     <Content Include="Contents\css\detalles-reporte.css" />
     <Content Include="Contents\css\font-awesome\font-awesome.css" />

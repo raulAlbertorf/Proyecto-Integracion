@@ -14,7 +14,11 @@
     <script src="~/Contents/js/maps-registrar.js"></script>
  <script type="text/javascript">
     $(document).ready(function () {
-        $("#date").datepicker();
+        $("#date").datepicker({
+            dateFormat: 'yy-mm-dd'
+
+        });
+        console.log(document.getElementById("date").value);
     });
 </script>
 }

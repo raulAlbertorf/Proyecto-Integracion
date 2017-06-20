@@ -32,7 +32,8 @@ namespace Proyecto_Integracion.WebApp.Controllers
         public ActionResult Crear(Reporte r, Ubicacion u, FormCollection collection)
         {
 
-            string date = Request.Form["date"];
+            String date = Request.Form["date"];
+            string pattern = "yyyy-dd-mm";
             var perfil_Activo = Utils.SessionManager.PerfilActivo();
             if (perfil_Activo != null && Utils.SessionManager.CuentaActiva() != null)
             {
@@ -41,9 +42,11 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 {
                     
                     r.Perfil = perfil_Activo;
-                    DateTime fecha;
-                    DateTime.TryParse(date, out fecha);
-                    r.FechaExpedicion = fecha;
+                    DateTime dt;
+                    DateTime.TryParse(date, out dt);
+                                    //DateTime fecha;
+                                    //DateTime.TryParse(date, out fecha);
+                                    r.FechaExpedicion = dt;
                     r.Ubicacion = u;
                     if (r.Crear())
                     {
@@ -87,17 +90,26 @@ namespace Proyecto_Integracion.WebApp.Controllers
         [HttpPost]
         public ActionResult Modificar(Reporte r, Ubicacion u, FormCollection collection)
         {
-            u.Direccion = Utils.GeoLocation.direccion(u);
-            u.Modificar();
-            r.Ubicacion = u;
-            string date = Request.Form["date"];
-            DateTime fecha;
-            DateTime.TryParse(date, out fecha);
-            r.FechaExpedicion = fecha;
-            if (r.Modificar())
+            Ubicacion ubicacion = new Ubicacion();
+            ubicacion.Seleccionar(Convert.ToInt64(Request.Form["Id_Ubicacion"]));
+            ubicacion.Latitud = u.Latitud;
+            ubicacion.Longitud = u.Longitud;
+            ubicacion.Direccion = Utils.GeoLocation.direccion(ubicacion);
+            if (ubicacion.Modificar())
             {
-                Utils.UIWarnings.SetInfo("Modificación de reporte exitosa");
-                return RedirectToAction("Detalles", "Reporte", new { Id = r.Id});
+                r.Ubicacion = ubicacion;
+                String date = Request.Form["date"];
+                string pattern = "yyyy-dd-mm";
+                DateTime dt;
+                DateTime.TryParse(date, out dt);
+                //DateTime fecha;
+                //DateTime.TryParse(date, out fecha);
+                r.FechaExpedicion = dt;
+                if (r.Modificar())
+                {
+                    Utils.UIWarnings.SetInfo("Modificación de reporte exitosa");
+                    return RedirectToAction("Detalles", "Reporte", new { Id = r.Id });
+                }
             }
             Utils.UIWarnings.SetError("No se pudo realizar las modificaciones del reporte");
             return RedirectToAction("Index","Home");

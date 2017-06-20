@@ -14,7 +14,10 @@
     <script src="~/Contents/js/maps-modificar.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-        $("#date").datepicker();
+       $("#date").datepicker({
+            dateFormat: 'yy-mm-dd'
+
+        });
     });
 </script>
 }
@@ -35,12 +38,12 @@
                     @Html.HiddenFor(Model => Model.Perfil.Nombre)
                     @Html.HiddenFor(Model => Model.Perfil.UrlImagen)
                     @Html.HiddenFor(Model => Model.Perfil.Ubicacion)
+                    @Html.Hidden("Id_Ubicacion", Model.Ubicacion.Id)
                     @Html.HiddenFor(Model => Model.Perfil.Cuenta)
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="FechaExpedicion" class="letra-prompt">Fecha</label>
-                            @Html.TextBox("date", @Model.FechaExpedicion, "{0:MM/dd/yyyy}", new { id = "date", @class = "form-control"} );
-                            <!--<input type="text" class="form-control" id="date" name="date" value="@Model.FechaExpedicion" />-->
+                            @Html.TextBox("date", @Model.FechaExpedicion, "{0:yyyy-dd-MM}", new { id = "date", @class = "form-control"} )
                         </div>
 
                         <div class="form-group">
@@ -55,10 +58,10 @@
                             }
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Latitud" id="Latitud" value="@Model.Ubicacion.Latitud">
+                            <input type="text" name="Latitud" id="Latitud" value="@Model.Ubicacion.Latitud" hidden>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Longitud" id="Longitud" value="@Model.Ubicacion.Longitud">
+                            <input type="text" name="Longitud" id="Longitud" value="@Model.Ubicacion.Longitud" hidden>
                         </div>
 
                         <!--</form>-->
