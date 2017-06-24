@@ -93,4 +93,16 @@
     <br />
     <br />
     <br />
+
+    <ul>
+        @{
+            foreach (var value in Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetValues(Proyecto_Integracion.Models.TipoIncidente.ExplotacionSexual))
+            {
+               
+                    var description = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(value);
+                    <li>@Html.DisplayFor(e => description)</li>
+            }
+        }
+        
+    </ul>
 </div>

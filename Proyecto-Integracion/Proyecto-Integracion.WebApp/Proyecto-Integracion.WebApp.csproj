@@ -140,6 +140,7 @@
     <Content Include="Contents\css\font-awesome\font-awesome.min.css" />
     <Content Include="Contents\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Contents\css\leaflet\leaflet.awesome-markers.css" />
     <Content Include="Contents\css\Maps.css" />
     <Content Include="Contents\css\index.css" />
     <Content Include="Contents\css\Crear_Cuenta.css" />
@@ -162,6 +163,13 @@
     <Content Include="Contents\img\leaflet_img\marker-icon-2x.png" />
     <Content Include="Contents\img\leaflet_img\marker-icon.png" />
     <Content Include="Contents\img\leaflet_img\marker-shadow.png" />
+    <Content Include="Contents\img\leaflet_img\markers-matte%402x.png" />
+    <Content Include="Contents\img\leaflet_img\markers-matte.png" />
+    <Content Include="Contents\img\leaflet_img\markers-plain.png" />
+    <Content Include="Contents\img\leaflet_img\markers-shadow%402x.png" />
+    <Content Include="Contents\img\leaflet_img\markers-shadow.png" />
+    <Content Include="Contents\img\leaflet_img\markers-soft%402x.png" />
+    <Content Include="Contents\img\leaflet_img\markers-soft.png" />
     <Content Include="Contents\img\perfiles\PICON_023.png" />
     <Content Include="Contents\img\perfiles\PICON_028.png" />
     <Content Include="Contents\img\perfiles\unknown-user.png" />
@@ -178,7 +186,10 @@
     <Content Include="Contents\js\imagen.js" />
     <Content Include="Contents\js\jquery-ui.js" />
     <Content Include="Contents\js\jquery-ui.min.js" />
+    <Content Include="Contents\js\leaflet.awesome-markers.js" />
+    <Content Include="Contents\js\leaflet.awesome-markers.min.js" />
     <Content Include="Contents\js\map-visualizar.js" />
+    <Content Include="Contents\js\maps-buscador.js" />
     <Content Include="Contents\js\maps-index.js" />
     <Content Include="Contents\js\maps-modificar.js" />
     <Content Include="Contents\js\maps-registrar.js" />
