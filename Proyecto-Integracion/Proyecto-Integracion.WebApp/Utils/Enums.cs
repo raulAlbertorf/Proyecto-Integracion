@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Proyecto_Integracion.Models;
 
 namespace Proyecto_Integracion.WebApp.Utils
 {
@@ -74,15 +75,69 @@ namespace Proyecto_Integracion.WebApp.Utils
             {
                 items.Add(new ListItem
                 {
-                    Text = Enum.GetName(typeof(Proyecto_Integracion.Models.TipoIncidente), i),
-                    Value = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue((Proyecto_Integracion.Models.TipoIncidente)i)
+                    Text = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue((Proyecto_Integracion.Models.TipoIncidente)i),
+                    Value = Enum.GetName(typeof(Proyecto_Integracion.Models.TipoIncidente), i)
+
                 });
             }
 
             return new SelectList(items);
         }
-    }
 
+        public static SelectList Seleccionar_SelectList(Proyecto_Integracion.Models.TipoIncidente incidente)
+        {
+            Array values = Enum.GetValues(typeof(Proyecto_Integracion.Models.TipoIncidente));
+            List<ListItem> items = new List<ListItem>(values.Length);
 
+            foreach (var i in values)
+            {
+                if (Enum.GetName(typeof(Proyecto_Integracion.Models.TipoIncidente), i) == Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(incidente))
+                {
+                    items.Add(new ListItem
+                    {
+                        Text = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue((Proyecto_Integracion.Models.TipoIncidente)i),
+                        Value = Enum.GetName(typeof(Proyecto_Integracion.Models.TipoIncidente), i),
+                        Selected = true
+                    });
+                }
+                else
+                {
+                    items.Add(new ListItem
+                    {
+                        Text = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue((Proyecto_Integracion.Models.TipoIncidente)i),
+                        Value = Enum.GetName(typeof(Proyecto_Integracion.Models.TipoIncidente), i)
+                    });
+                }
+            }
 
+            return new SelectList(items);
+        }
+
+       public static TipoIncidente Change(T value)
+        {
+            String inci = null;
+            switch (value.ToString())
+            {
+                case "Homicidio":
+                    inci = "Homicidio";
+                    break;
+                case "Suicidio":
+                    inci = "Suicidio";
+                    break;
+                case "Robo o Asalto":
+                    inci = "RoboAsalto";
+                    break;
+                case "Violación":
+                    inci = "Violacion";
+                    break;
+                case "Explotación Sexual":
+                    inci = "ExplotacionSexual";
+                    break;
+            }
+            var salida = new TipoIncidente();
+            Enum.TryParse(inci, out salida);
+            return salida;
+        }
+
+        }
 }

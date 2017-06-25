@@ -33,14 +33,12 @@ namespace Proyecto_Integracion.WebApp.Controllers
         {
 
             String date = Request.Form["date"];
-            string pattern = "yyyy-dd-mm";
             var perfil_Activo = Utils.SessionManager.PerfilActivo();
-            if (perfil_Activo != null && Utils.SessionManager.CuentaActiva() != null)
+            if (perfil_Activo != null && Utils.SessionManager.CuentaActiva() != null && r.Incidente != 0)
             {
                 u.Direccion = Utils.GeoLocation.direccion(u);
                 if (u.Crear())
                 {
-                    
                     r.Perfil = perfil_Activo;
                     DateTime dt;
                     DateTime.TryParse(date, out dt);
@@ -95,7 +93,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
             ubicacion.Latitud = u.Latitud;
             ubicacion.Longitud = u.Longitud;
             ubicacion.Direccion = Utils.GeoLocation.direccion(ubicacion);
-            if (ubicacion.Modificar())
+            if (ubicacion.Modificar() && r.Incidente != 0)
             {
                 r.Ubicacion = ubicacion;
                 String date = Request.Form["date"];

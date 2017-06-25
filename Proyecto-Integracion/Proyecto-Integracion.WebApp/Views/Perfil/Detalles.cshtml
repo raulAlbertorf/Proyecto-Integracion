@@ -94,7 +94,10 @@
                                                 <i class="fa fa-map-marker fa-3x texto-naranja" aria-hidden="true"></i>
                                             </div>
                                             <div class="media-body text-justify">
-                                                <h4 class="media-heading"><strong>Incidente: </strong>@reporte.Incidente</h4>
+                                                @{
+                                                    var incidente = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(reporte.Incidente);
+                                                    <h4 class="media-heading"><strong>Incidente: </strong>@incidente</h4>
+                                                }
                                                 <p><strong>Descripción: </strong>@reporte.Descripcion</p>
                                                 <p><strong>Fecha: </strong> @reporte.FechaExpedicion.ToString("d")</p>
                                                 <p><strong>Dirección: </strong> @reporte.Ubicacion.Direccion</p>
@@ -104,7 +107,7 @@
                                     </a>
                                 </div>
 
-                            }
+                                                    }
                         }
 
                     </div>

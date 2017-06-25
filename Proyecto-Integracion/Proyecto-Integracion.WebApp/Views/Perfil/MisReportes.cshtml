@@ -53,14 +53,17 @@
                                                 <i class="fa fa-map-marker fa-3x texto-naranja" aria-hidden="true"></i>
                                             </div>
                                             <div class="media-body text-justify">
-                                                <input id="incidente+@i" value="@reporte.Incidente" hidden/>
-                                                <h4 class="media-heading"><strong>Incidente: </strong>@reporte.Incidente</h4>
-                                                <p><strong>Descripción: </strong>@reporte.Descripcion</p>
-                                                <p><strong>Fecha: </strong> @reporte.FechaExpedicion.ToString("d")</p>
-                                                <p><strong>Dirección: </strong> @reporte.Ubicacion.Direccion</p>
-                                                <input id="Latitud+@i" name="Latitud+@i" value="@reporte.Ubicacion.Latitud" hidden/>
-                                                <input id="Longitud+@i" value="@reporte.Ubicacion.Longitud" hidden/>
-                                            </div>
+                                                @{
+                                                    var incidente = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(reporte.Incidente);
+                                                    <input id="incidente+@i" value="@reporte.Incidente" hidden />
+                                                    <h4 class="media-heading"><strong>Incidente: </strong>@incidente</h4>
+                                                    }
+                                                    <p><strong>Descripción: </strong>@reporte.Descripcion</p>
+                                                    <p><strong>Fecha: </strong> @reporte.FechaExpedicion.ToString("d")</p>
+                                                    <p><strong>Dirección: </strong> @reporte.Ubicacion.Direccion</p>
+                                                    <input id="Latitud+@i" name="Latitud+@i" value="@reporte.Ubicacion.Latitud" hidden />
+                                                    <input id="Longitud+@i" value="@reporte.Ubicacion.Longitud" hidden />
+</div>
                                         </div>
 
                                     </a>

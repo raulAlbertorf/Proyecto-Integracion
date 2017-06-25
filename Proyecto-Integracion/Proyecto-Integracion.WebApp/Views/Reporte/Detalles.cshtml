@@ -39,7 +39,10 @@
                     <p class="text-justify">@Model.Descripcion</p>
                 </div>
                 <div class="form-group">
-                    <p><strong>Tipo de Delito: </strong>@Model.Incidente</p>
+                    @{
+                        var incidente = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(Model.Incidente);
+                        <p><strong>Tipo de Delito: </strong>@incidente</p>
+                    }
                 </div>
                 <div class="form-group">
                     <input type="text" name="Latitud" id="Latitud" value="@Model.Ubicacion.Latitud" hidden>

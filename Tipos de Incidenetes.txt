@@ -1,0 +1,8 @@
+Homicidio
+Suicidio
+Robo/Asalto
+Violacion
+Explotación Sexual
+
+
+Enum.GetValues(typeof(Proyecto_Integracion.Models.TipoIncidente)), "Display"), new { @class = "form-control" }

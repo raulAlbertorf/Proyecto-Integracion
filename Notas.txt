@@ -45,3 +45,50 @@ https://console.developers.google.com/apis/credentials/wizard?api=maps-backend.g
 
 
 @Html.DropDownList("Estado", new SelectList(Enum.GetValues(typeof(Proyecto_Integracion.Models.TipoIncidente)), "Display"), new { @class = "form-contr
+
+
+
+//No sirven pero quiero guardarlos
+
+   @Html.DropDownList("Incidente", Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.Seleccionar_SelectList(@Model.Incidente), new { @class = "form-control" })
+
+
+@Html.TextBox("date", @Model.FechaExpedicion, "{0:yyyy-dd-MM}", new { id = "date", @class = "form-control"} )
+
+
+
+//Utiliza un circulo rojo con una cruz y te permite moverlo por el mapa...
+
+                var circle = new L.Icon.Canvas({ iconSize: new L.Point(30, 30) });
+
+                circle.draw = function (ctx, w, h) {
+
+                    ctx.translate(w / 2, h / 2);
+
+                    ctx.beginPath();
+
+                    ctx.fillStyle = "#F00";
+
+                    ctx.arc(0, 0, w / 2 - 1, 0, Math.PI * 2, true);
+
+                    ctx.fill();
+
+                    ctx.lineWidth = 2;
+
+                    ctx.strokeStyle = '#FFF';
+
+                    ctx.moveTo(-w / 5, -h / 5);
+
+                    ctx.lineTo(w / 5, h / 5);
+
+                    ctx.moveTo(-w / 5, h / 5);
+
+                    ctx.lineTo(w / 5, -h / 5);
+
+                    ctx.stroke();
+
+                    ctx.closePath();
+
+                };
+
+                map.addLayer(new L.Marker(map.getCenter(), { icon: circle, draggable: true, opacity: 0.7 }));
