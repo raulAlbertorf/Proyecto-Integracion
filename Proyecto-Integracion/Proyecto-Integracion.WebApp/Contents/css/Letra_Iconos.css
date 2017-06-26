@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.homicidio{
+    color: red;
+    font-size: 10px;
+    text-align:center;
+}
+
+.suicidio{
+    color: darkred;
+    font-size: 10px;
+    text-align:center;
+}
+
+.roboasalto{
+    color: lightred;
+    font-size: 10px;
+    text-align:center;
+}
+
+.violacion{
+    color: orange;
+    font-size: 10px;
+    text-align:center;
+}
+
+.explotacionsexual{
+    color: black;
+    font-size: 10px;
+    text-align:center;
+}   

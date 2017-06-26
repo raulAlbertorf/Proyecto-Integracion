@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Proyecto_Integracion.Models;
+using PagedList;
+
 namespace Proyecto_Integracion.WebApp.Controllers
 {
     public class HomeController : Controller
@@ -21,43 +23,55 @@ namespace Proyecto_Integracion.WebApp.Controllers
             return View();
         }
 
-        //public ActionResult Busqueda(string buscar, int page = 1, int cantResult = 10, int filtro = 1)
-        //{
-        //    Estanteria e = new Estanteria();
-        //    if (String.IsNullOrEmpty(buscar))
-        //    {
-        //        buscar = "";
-        //    }
-        //    var result = new List<Reporte>();
-        //    switch (filtro)
-        //    {
-        //        case 1: //titulo
-        //            result = e.Buscar(buscar, page, cantResult);
-        //            break;
-        //        case 2: //Autor
-        //            result = e.BuscarPorAutor(buscar, page, cantResult);
-        //            break;
-        //        case 3: //Propiedad
-        //            result = e.BuscarPorPropiedad(buscar, page, cantResult);
-        //            break;
-        //        case 4: //Ubicacion    usamos radio de 40.
-        //            try
-        //            {
-        //                var p = Utils.SessionManager.PerfilActivo();
-        //                Ubicacion u = p.Ubicacion;
-        //                var radio = 40;
-        //                result = e.Buscar(buscar, u, page, cantResult, radio);
-        //            }
-        //            catch (Exception ex)
-        //            { }
-        //            break;
-        //        case 5: //All
-        //            result = e.BuscarPorAll(buscar, page, cantResult);
-        //            break;
-        //        default:
-        //            result = e.Buscar(buscar, page, cantResult);
-        //            break;
-        //    }
-        //}
+        public ActionResult Busqueda(int? page, TipoIncidente incidente)
+        {
+            Estanteria e = new Estanteria();
+            List<Proyecto_Integracion.Models.Reporte> reportes = e.Buscar(incidente);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(reportes.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult BusquedaGeneral(FormCollection collection, int? page, String termino, int filtro = 5)
+        {
+            Estanteria e = new Estanteria();
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            if (String.IsNullOrEmpty(termino))
+            {
+                termino = "";
+            }
+            var result = new List<Reporte>();
+            switch (filtro)
+            {
+                case 1: //Dirección
+                    result = e.BuscarPorDireccion(termino);
+                    break;
+                case 2: //Fecha
+                    termino = Request.Form["date"];
+                    result = e.BuscarPorFecha(termino);
+                    break;
+                case 3: //Palabra Clave
+                    result = e.BuscarPorPalabra(termino);
+                    break;
+                case 4: //Ubicacion usamos radio de 40. ALL
+                    try
+                    {
+                        var p = Utils.SessionManager.PerfilActivo();
+                        Ubicacion u = p.Ubicacion;
+                        var radio = 40;
+                        result = e.Buscar(termino, u, radio);
+                    }
+                    catch (Exception ex)
+                    { }
+                    break;
+                case 5: //All
+                    result = e.BuscarPorAll(termino);
+                    break;
+            }
+            this.ViewBag.Termino = termino;
+            return View(result.ToPagedList(pageNumber, pageSize));
+        }
     }
 }
+

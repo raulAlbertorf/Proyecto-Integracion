@@ -23,6 +23,8 @@ C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-In
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Microsoft.ApplicationInsights.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.dll
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.Mvc.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Proyecto-Integracion.Models.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\System.Web.Helpers.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\System.Web.Mvc.dll
@@ -38,6 +40,8 @@ C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-In
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Microsoft.ApplicationInsights.xml
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.xml
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.Mvc.xml
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\System.Web.Razor.xml
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\System.Web.Webpages.xml
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\System.Web.Webpages.Deployment.xml
@@ -54,7 +58,3 @@ C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-In
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\obj\Debug\Proyecto-Integracion.WebApp.csprojResolveAssemblyReference.cache
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\obj\Debug\Proyecto-Integracion.WebApp.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\obj\Debug\Proyecto-Integracion.WebApp.pdb
-C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.dll
-C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.Mvc.dll
-C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.xml
-C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.WebApp\bin\PagedList.Mvc.xml

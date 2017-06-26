@@ -2,6 +2,6 @@ C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-In
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\bin\Debug\Proyecto-Integracion.Models.pdb
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\bin\Debug\MySql.Data.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\bin\Debug\MySql.Data.xml
+C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\obj\Debug\Proyecto-Integracion.Models.csprojResolveAssemblyReference.cache
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\obj\Debug\Proyecto-Integracion.Models.dll
 C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\obj\Debug\Proyecto-Integracion.Models.pdb
-C:\Users\RF RAUL\Documents\Proyecto-Integracion\Proyecto-Integracion\Proyecto-Integracion.Models\Proyecto-Integracion.Models\obj\Debug\Proyecto-Integracion.Models.csprojResolveAssemblyReference.cache

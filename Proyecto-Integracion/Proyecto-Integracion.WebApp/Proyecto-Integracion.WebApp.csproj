@@ -141,6 +141,8 @@
     <Content Include="Contents\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Contents\css\leaflet\leaflet.awesome-markers.css" />
+    <Content Include="Contents\css\leaflet\leaflet.draw.css" />
+    <Content Include="Contents\css\Letra_Iconos.css" />
     <Content Include="Contents\css\Maps.css" />
     <Content Include="Contents\css\index.css" />
     <Content Include="Contents\css\Crear_Cuenta.css" />
@@ -189,6 +191,7 @@
     <Content Include="Contents\js\jquery-ui.min.js" />
     <Content Include="Contents\js\leaflet.awesome-markers.js" />
     <Content Include="Contents\js\leaflet.awesome-markers.min.js" />
+    <Content Include="Contents\js\leaflet.draw.js" />
     <Content Include="Contents\js\map-visualizar.js" />
     <Content Include="Contents\js\maps-buscador.js" />
     <Content Include="Contents\js\maps-index.js" />
@@ -254,6 +257,13 @@
     <Content Include="Views\Shared\_NotificacionesModal.cshtml" />
     <Content Include="Views\Perfil\MisReportes.cshtml" />
     <Content Include="Contents\js\Marker.Text.js" />
+    <Content Include="Views\Home\_CollapseDropDown_TipoIncidente.cshtml" />
+    <Content Include="Views\Home\Busqueda.cshtml" />
+    <Content Include="Views\Home\_CollapseDropDown_All.cshtml" />
+    <Content Include="Views\Home\_CollapseDropDown_Direccion.cshtml" />
+    <Content Include="Views\Home\_CollapseDropDown_Fecha.cshtml" />
+    <Content Include="Views\Home\_CollapseDropDown_Palabra.cshtml" />
+    <Content Include="Views\Home\BusquedaGeneral.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

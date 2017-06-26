@@ -1,12 +1,7 @@
 --Delimiter $$
-DROP PROCEDURE IF EXISTS sp_Item_Seleccionar_Items_Termino_Ubicacion $$
-CREATE PROCEDURE sp_Item_Seleccionar_Items_Termino_Ubicacion (
-	inTermino VARCHAR(256),
-    inUbicacion_Latitude float(10,6),
-    inUbicacion_Longitude float(10,6),
-    inRadio	INT,
-    inOffset INT,
-	inLimit INT
+DROP PROCEDURE IF EXISTS sp_Reporte_Seleccionar_Reportes_Termino_Descripcion $$
+CREATE PROCEDURE sp_Reporte_Seleccionar_Reportes_Termino_Descripcion (
+	inPalabra VARCHAR(255)
 )
 BEGIN
 SELECT 
@@ -34,14 +29,8 @@ INNER JOIN ubicacion AS u
 INNER JOIN cuenta AS c
 	ON p.Cuenta_Email =  c.Email
     WHERE
-    ( 6371 * acos( cos( radians(inUbicacion_Latitude) ) * cos( radians( U.Latitude ) ) * cos( radians( U.Longitude ) - radians(inUbicacion_Longitude) ) + sin( radians(inUbicacion_Latitude) ) * sin( radians( U.Latitude ) ) ) ) <= inRadio AND
-    (r.Descripcion LIKE  CONCAT("%",inTermino,"%") 		OR
-	CAST(r.Fecha AS date) = inTermino AND
-    YEAR(r.Fecha) = inTermino)
-	ORDER BY r.Fecha desc
-    LIMIT
-		inOffset, inLimit 
-	;
+    r.Descripcion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inPalabra , ' ', 2 ),' ',1) , '%') 
+	ORDER BY r.Fecha desc;
     
     
     
