@@ -1,7 +1,9 @@
 --Delimiter $$
 DROP PROCEDURE IF EXISTS sp_Reporte_Seleccionar_Reportes_Termino_Fecha $$
 CREATE PROCEDURE sp_Reporte_Seleccionar_Reportes_Termino_Fecha (
-	inFecha VARCHAR(255)
+	inFecha VARCHAR(255),
+    inPage int,
+	inCantResult int
 )
 BEGIN
 SELECT 
@@ -32,7 +34,8 @@ INNER JOIN cuenta AS c
      CAST(r.Fecha AS DATE)= inFecha
      #       OR
 	#YEAR(r.Fecha) = inFecha
-	ORDER BY r.Fecha desc;
+	ORDER BY r.Fecha desc
+     LIMIT inPage, inCantResult;
     
     
     

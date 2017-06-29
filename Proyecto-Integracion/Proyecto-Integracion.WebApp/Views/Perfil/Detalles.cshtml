@@ -28,6 +28,14 @@
                 </div>
             }
         </div>
+        <div class="row text-center">
+            <br />
+            <br />
+            <a class="btn btn-success" href="@Url.Action("Index","Home")">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                &nbsp;Regresar
+            </a>
+        </div>
     </div>
     <div class="col-md-7">
         <div class="panel panel-default panel-mis-datos">
@@ -41,18 +49,24 @@
         </div>
     </div>
     <div class="col-md-2 text-right">
-        <a class="btn btn-warning" href="@Url.Action("Modificar","Perfil", new { Id = Model.Id})">
-            Módificar
-            <i class="glyphicon glyphicon-pencil"></i>
-        </a>
-        <br />
-        <br />
-        <br />
-        <a class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar">
-            Eliminar&nbsp;&nbsp;
-            <i class="glyphicon glyphicon-remove"></i>
-        </a>
+        @if (Perfil_Activo != null && Cuenta_Activa != null && Perfil_Activo.Id == Model.Id)
+        {
+
+            <a class="btn btn-warning" href="@Url.Action("Modificar", "Perfil", new { Id = Model.Id })">
+                Módificar
+                <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <br />
+            <br />
+            <br />
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar">
+                Eliminar&nbsp;&nbsp;
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+        }
     </div>
+@if (Perfil_Activo != null && Cuenta_Activa != null && Perfil_Activo.Id == Model.Id)
+{
     <div class="col-md-12">
         <div class="text-center">
             <a href="@Url.Action("Crear", "Reporte")" type="button" class="btn btn-warning letra-prompt btn-lg">Nuevo Reporte <i class="fa fa-plus-square" aria-hidden="true"></i></a>
@@ -60,6 +74,7 @@
             <br />
         </div>
     </div>
+}
     <!--Mis ultimos reportes-->
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -74,8 +89,8 @@
                             var mis_reportes = Model.MisReportes();
                             if (mis_reportes.Count() == 0)
                             {
-                                <div class="col-xs-12 text-right">
-                                    <h4>Aun no cuentas con algún reporte</h4>
+                                <div class="col-xs-12 text-center">
+                                    <h4><strong>Aún no cuentas con algún reporte</strong></h4>
                                 </div>
                             }
                             if (mis_reportes.Count() > 4)

@@ -4,6 +4,8 @@ CREATE PROCEDURE sp_Reporte_Seleccionar_Reportes_Termino_Ubicacion (
 	inTermino VARCHAR(256),
     inUbicacion_Latitude float(10,6),
     inUbicacion_Longitude float(10,6),
+    inPage int,
+	inCantResult int,
     inRadio	INT
 )
 BEGIN
@@ -34,9 +36,11 @@ INNER JOIN cuenta AS c
     WHERE
     ( 6371 * acos( cos( radians(inUbicacion_Latitude) ) * cos( radians( U.Latitude ) ) * cos( radians( U.Longitude ) - radians(inUbicacion_Longitude) ) + sin( radians(inUbicacion_Latitude) ) * sin( radians( U.Latitude ) ) ) ) <= inRadio AND
     (r.Descripcion LIKE  CONCAT("%",inTermino,"%") 		OR
+    u.Delegacion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino , ' ', 2 ),' ',1) , '%') OR
 	CAST(r.Fecha AS date) = inTermino AND
     YEAR(r.Fecha) = inTermino)
-	ORDER BY r.Fecha desc;
+	ORDER BY r.Fecha desc
+    LIMIT inPage, inCantResult;
     
     
     

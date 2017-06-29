@@ -1,7 +1,9 @@
 --Delimiter $$
 DROP PROCEDURE IF EXISTS sp_Reporte_Seleccionar_Reportes_Termino_Descripcion $$
 CREATE PROCEDURE sp_Reporte_Seleccionar_Reportes_Termino_Descripcion (
-	inPalabra VARCHAR(255)
+	inPalabra VARCHAR(255),
+    inPage int,
+	inCantResult int
 )
 BEGIN
 SELECT 
@@ -30,7 +32,8 @@ INNER JOIN cuenta AS c
 	ON p.Cuenta_Email =  c.Email
     WHERE
     r.Descripcion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inPalabra , ' ', 2 ),' ',1) , '%') 
-	ORDER BY r.Fecha desc;
+	ORDER BY r.Fecha desc
+    LIMIT inPage, inCantResult;
     
     
     

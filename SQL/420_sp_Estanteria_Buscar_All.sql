@@ -2,7 +2,9 @@
 DROP PROCEDURE IF EXISTS sp_Estanteria_Buscar_All $$
 
 CREATE PROCEDURE sp_Estanteria_Buscar_All (
-	inTermino varchar(255)
+	inTermino varchar(255),
+    inPage int,
+	inCantResult int
 )
 BEGIN
 	SELECT DISTINCT
@@ -30,9 +32,13 @@ BEGIN
 			OR
 		    r.Descripcion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino, ' ', -1 ),' ',2) , '%')
 		    OR
+            p.Nombre = inTermino
+            OR
 		    CAST(r.Fecha AS DATE)= inTermino
 		    OR
 		    r.Incidente = CAST( inTermino AS decimal)
-		);
+		)
+        ORDER BY r.Fecha DESC
+        LIMIT inPage, inCantResult;
 END
 $$

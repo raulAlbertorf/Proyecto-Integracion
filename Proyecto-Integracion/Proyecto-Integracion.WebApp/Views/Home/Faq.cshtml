@@ -1,0 +1,268 @@
+﻿
+@{
+    ViewBag.Title = "Preguntas Frecuentes";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section Scripts{
+
+
+}
+
+@section Styles{
+
+    <link rel="stylesheet" href="~/Contents/css/faq.css" />
+    <link rel="stylesheet" href="~/Contents/css/dotText.css" />
+}
+
+<div class="container">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-1">
+        <h1>Preguntas Frecuentes</h1>
+        <br>
+    </div>
+    <div class="col-md-10 col-sm-12 col-xs-12 col-md-offset-1">
+        <div class="tab-content">
+            <div class="tab-pane active in fade" id="cuenta-tab">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#libromatico-faq">
+                                <h4 class="panel-title">
+                                    ¿Qué es ReportIt?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="libromatico-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                ReportIt es una Aplicación con fines de ayuda a la sociedad aportando información de publicaciones de incidentes delictivos con localización.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#cuenta-crear-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo crear una cuenta?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="cuenta-crear-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Para crear una cuenta accede <a href="@Url.Action("Crear", "Cuenta")">aquí</a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#cuenta-gestionar-perfiles-faq">
+                                <h4 class="panel-title ">
+                                    ¿Por qué debo tener una cuenta?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="cuenta-gestionar-perfiles-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Tener una cuenta te da la posibilidad de realizar publicaciones y asi aportar a nuestros demas usuarios como tu a tener mas información sobre la seguridad en la CDMX.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#item-poseer-faq">
+                                <h4 class="panel-title">
+                                    ¿Cuántos Reportes de incidentes puedo tener?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="item-poseer-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Todos los que tu quieras!.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#perfil-agregar-item-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo agregar un nuevo Reporte?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="perfil-agregar-item-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Para agregar un nuevo Reporte necesitas estar autenticado, si lo estás, debes dar click en <strong><a href="@Url.Action("Crear", "Reporte")">Nuevo</a></strong>, o desde tu perfil en <strong><a href="@Url.Action("Crear", "Reporte")">Nuevo Reporte</a></strong> colocale una fecha, una descripción y un tipo de incidente y coloca en el mapa la ubicación del incidente que viste o fuiste victima.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#perfil-eliminar-item-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo eliminar uno de mis Reportes?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="perfil-eliminar-item-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Puedes eliminar un Reporte cuando quieras, debes entrar a visualizar tu reporte desde <strong>Mis Reportes</strong>,
+                                dar click en el y entrar en detalles, y finalmente ahí encontrarás el ícono eliminar en color rojo en su esquina superior derecha.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#item-editar-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo editar uno de mis Reportes?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="item-editar-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Si estás autenticado y tienes Reportes que deseas editar, debes ir a <strong>Mis Reportes</strong> y hacer click en alguno de ellos, entonces ahí encontrarás la opción para <strong>Módificar</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#item-agregar-prop-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo realizar una busqueda de un Reporte?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="item-agregar-prop-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p class="text-justify">!Para realizar las busquedas de reportes no debes estar autentificado!.</p>
+                                <p class="text-justify">
+                                    Nuestros <strong>Filtros</strong> con los que podrás realizar las busquedas son los siguientes:
+                                    <ul>
+                                        <li>
+                                            <strong>Por Dirección</strong>
+                                        </li>
+                                        <li>
+                                            <strong>Por Fecha</strong>
+                                        </li>
+                                        <li>
+                                            <strong>Por Palabra Clave</strong>
+                                        </li>
+                                        <li>
+                                            <strong>Por Incidente</strong>
+                                        </li>
+                                        <li>
+                                            <strong>Por Todo</strong>
+                                        </li>
+                                        <li>
+                                            <strong>Por Mi Ubicación**</strong>
+                                        </li>
+                                    </ul>
+                                </p>
+                                <p class="text-left"><strong>Buscador en la página de inicio:</strong></p>
+                                <p class="text-justify">Desde nuestra página de inicio encontraras nuestras opciones para realizar busquedas por diferentes filtros.</p>
+                                <p class="text-left"><strong>Buscador desde cualquier otra página</strong></p>
+                                <p class="text-justify">
+                                    Desde cuaquier otra vista de nuestra aplicación encontraras un buscador en la parte superior debajo de nuestro menu,
+                                    ahí podrás realizar busquedas por cualquier tipo de filtro. Por default tenemos el filtro de buscar<strong>Por Todo</strong> que realiza un busqueda en todos los campos de un Reporte.
+                                </p>
+                                <br />
+                                <p class="text-justify">
+                                    Recuerda que una vez que selecciones el filtro que desees en el buscador, este se permanecera guardado para que realices todas las busquedas que quieras hasta que decidas cambiar el filtro de busqueda.
+                                </p>
+                                <p class="text-justify">
+                                    **El filtro de <strong>Mi Ubicación</strong> únicamente está disponible para usuarios de la aplicación autentificados.
+                                </p>
+                                <p class="text-justify">
+                                    Para realizar <strong>Busquedas por Fecha</strong> deberas seleccionar el filtro <strong> Por Fecha</strong> y en nuestro buscador escribir la fecha con el formato <strong>yyyy-mm-dd.</strong>
+                                </p>
+                                <p class="text-justify">
+                                    Para realizar <strong>Busquedas por Tipo de Incidente</strong> deberas seleccionar el filtro <strong> Por Incidente</strong> y en nuestro buscador escribir alguna de las siquentes cadenas:
+                                    <ul>
+                                        <li>
+                                            <strong>#1</strong> : para busqueda por Homicidio
+                                        </li>
+                                        <li>
+                                            <strong>#2</strong> : para busqueda por Suicidio
+                                        </li>
+                                        <li>
+                                            <strong>#3</strong> : para busqueda por Robo o Asalto
+                                        </li>
+                                        <li>
+                                            <strong>#4</strong> : para busqueda por Violación
+                                        </li>
+                                        <li>
+                                            <strong>#5</strong> : para busqueda por Extorción Sexual
+                                        </li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    Para los demas filtros:
+                                    <ul>
+                                        <li>
+                                            <strong>Por Dirección</strong> : Realiza busquedas por direcciones específicas de los reportes.
+                                        </li>
+                                        <li>
+                                            <strong>Por Palabra Clave</strong> : Realiza busquedas por palabras claves contenidas en la descripción de un reporte.
+                                        </li>
+                                    </ul>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#prestamo-ver-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo ver un Reporte?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="prestamo-ver-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Si quieres ver tus Reportes, debes hacer click en el botón del extremo superior derecho y se desplegara la opción:
+                                <br>
+                                <ul>
+                                    <li>
+                                        <strong>Mis Reportes:</strong> Todo los Reportes que has realizado
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-faq">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-cat-1" href="#prestamo-cancelar-faq">
+                                <h4 class="panel-title">
+                                    ¿Cómo módificar o eliminar mi Perfil?
+                                    <span class="pull-right span-icono"><i class="glyphicon glyphicon-chevron-down icono-despliegue"></i></span>
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="prestamo-cancelar-faq" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Si quieres <strong>Módificar</strong> o <strong> Eliminar</strong> tu perfil debes hacer click en el botón del extremo superior derecho y se desplegara la opción:
+                                <br>
+                                <ul>
+                                    <li>
+                                        <strong>Mi Perfil</strong>
+                                    </li>
+                                </ul>
+                                Te redireccionará a ver tu perfil y en la esquina superior derecha encontrarás las dos opciones para realizar la Módificación o Eliminación de tu Perfil, pero te sugerimos que no lo hagas;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -9,8 +9,11 @@ namespace Proyecto_Integracion.Models
 {
     public class Estanteria
     {
-        public List<Reporte> Buscar(string termino, Ubicacion ubicacion, int radio)
+        public List<Reporte> Buscar(string termino, Ubicacion ubicacion, int pagina, int cantResult, int radio)
         {
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
             if (String.IsNullOrEmpty(termino))
             {
                 termino = "";
@@ -24,8 +27,8 @@ namespace Proyecto_Integracion.Models
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inUbicacion_Latitude", Direction = System.Data.ParameterDirection.Input, Value = ubicacion.Latitud });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inUbicacion_Longitude", Direction = System.Data.ParameterDirection.Input, Value = ubicacion.Longitud });
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inRadio", Direction = System.Data.ParameterDirection.Input, Value = radio });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inOffset", Direction = System.Data.ParameterDirection.Input, Value = index });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inLimit", Direction = System.Data.ParameterDirection.Input, Value = cantidadResultados });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
                 var datos = DB.GetDataSet(command);
 
                 if (datos.Tables[0].Rows.Count > 0)
@@ -65,15 +68,18 @@ namespace Proyecto_Integracion.Models
             return reportes;
         }
 
-        public List<Reporte> Buscar(TipoIncidente incidente)
+        public List<Reporte> Buscar(TipoIncidente incidente, int pagina, int cantResult)
         {
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
             List<Reporte> reportes = new List<Reporte>();
             try
             {
                 var command = new MySqlCommand() { CommandText = "sp_Reporte_Seleccionar_Reportes_Termino_Incidente", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inIncidente", Direction = System.Data.ParameterDirection.Input, Value = (int)incidente });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inOffset", Direction = System.Data.ParameterDirection.Input, Value = index });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inLimit", Direction = System.Data.ParameterDirection.Input, Value = cantidadResultados });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
                 var datos = DB.GetDataSet(command);
 
                 if (datos.Tables[0].Rows.Count > 0)
@@ -113,15 +119,18 @@ namespace Proyecto_Integracion.Models
             return reportes;
         }
 
-        public List<Reporte> BuscarPorFecha(String fecha)
+        public List<Reporte> BuscarPorFecha(String fecha, int pagina, int cantResult)
         {
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
             List<Reporte> reportes = new List<Reporte>();
             try
             {
                 var command = new MySqlCommand() { CommandText = "sp_Reporte_Seleccionar_Reportes_Termino_Fecha", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inFecha", Direction = System.Data.ParameterDirection.Input, Value = fecha });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inOffset", Direction = System.Data.ParameterDirection.Input, Value = index });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inLimit", Direction = System.Data.ParameterDirection.Input, Value = cantidadResultados });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
                 var datos = DB.GetDataSet(command);
 
                 if (datos.Tables[0].Rows.Count > 0)
@@ -161,15 +170,18 @@ namespace Proyecto_Integracion.Models
             return reportes;
         }
 
-        public List<Reporte> BuscarPorPalabra(String palabra)
+        public List<Reporte> BuscarPorPalabra(String palabra, int pagina, int cantResult)
         {
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
             List<Reporte> reportes = new List<Reporte>();
             try
             {
-                var command = new MySqlCommand() { CommandText = "sp_Reporte_Seleccionar_Reportes_Termino_Incidente", CommandType = System.Data.CommandType.StoredProcedure };
+                var command = new MySqlCommand() { CommandText = "sp_Reporte_Seleccionar_Reportes_Termino_Descripcion", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inPalabra", Direction = System.Data.ParameterDirection.Input, Value = palabra });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inOffset", Direction = System.Data.ParameterDirection.Input, Value = index });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inLimit", Direction = System.Data.ParameterDirection.Input, Value = cantidadResultados });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
                 var datos = DB.GetDataSet(command);
 
                 if (datos.Tables[0].Rows.Count > 0)
@@ -209,15 +221,18 @@ namespace Proyecto_Integracion.Models
             return reportes;
         }
 
-        public List<Reporte> BuscarPorDireccion(String direccion)
+        public List<Reporte> BuscarPorDireccion(String direccion, int pagina, int cantResult)
         {
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
             List<Reporte> reportes = new List<Reporte>();
             try
             {
                 var command = new MySqlCommand() { CommandText = "sp_Reporte_Seleccionar_Reportes_Termino_Direccion", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inDireccion", Direction = System.Data.ParameterDirection.Input, Value = direccion});
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inOffset", Direction = System.Data.ParameterDirection.Input, Value = index });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inLimit", Direction = System.Data.ParameterDirection.Input, Value = cantidadResultados });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
                 var datos = DB.GetDataSet(command);
 
                 if (datos.Tables[0].Rows.Count > 0)
@@ -257,19 +272,19 @@ namespace Proyecto_Integracion.Models
             return reportes;
         }
 
-        public List<Reporte> BuscarPorAll(string termino)
+        public List<Reporte> BuscarPorAll(string termino, int pagina, int cantResult)
         {
             List<Reporte> reportes = new List<Reporte>();
-            //int index = pagina;
-            //if (pagina > 0)
-            //    index = cantResult * (pagina - 1);
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
 
             try
             {
                 var command = new MySqlCommand() { CommandText = "sp_Estanteria_Buscar_All", CommandType = System.Data.CommandType.StoredProcedure };
                 command.Parameters.Add(new MySqlParameter() { ParameterName = "inTermino", Direction = System.Data.ParameterDirection.Input, Value = termino });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
-                //command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
                 var datos = DB.GetDataSet(command);
 
                 if (datos.Tables[0].Rows.Count > 0)

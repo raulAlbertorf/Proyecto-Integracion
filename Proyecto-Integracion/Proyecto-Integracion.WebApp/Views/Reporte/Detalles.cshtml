@@ -2,6 +2,8 @@
 @{
     Layout = "~/Views/_Layout.cshtml";
     ViewBag.Title = "Crear Reporte";
+    var perfil_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
+    var cuenta_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
 }
 
 @section Styles{
@@ -67,17 +69,50 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2 text-right">
-        <a class="btn btn-warning" href="@Url.Action("Modificar","Reporte", new { Id = Model.Id})">
-            Módificar
-            <i class="glyphicon glyphicon-pencil"></i>
-        </a>
-        <br />
-        <br />
-        <br />
-        <a class="btn btn-danger" href="@Url.Action("Eliminar", "Reporte", new { Id = Model.Id})">
-            Eliminar&nbsp;&nbsp;
-            <i class="glyphicon glyphicon-remove"></i>
-        </a>
+    <div class="col-md-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Perfil</h4>
+            </div>
+            <div class="panel-body">
+                <p><strong>Nombre:</strong><a href="@Url.Action("Detalles", "Perfil", new { Id = Model.Perfil.Id})"> @Model.Perfil.Nombre</a></p>
+            </div>
+        </div>
+            @if (perfil_activo != null && cuenta_activo != null && perfil_activo.Id == Model.Perfil.Id)
+            {
+                <div class="text-center">
+                    <br />
+                    <br />
+                    <a class="btn btn-warning" href="@Url.Action("Modificar", "Reporte", new { Id = Model.Id })">
+                        Módificar
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <br />
+                    <br />
+                    <br />
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar">
+                        Eliminar&nbsp;&nbsp;
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </div>
+            }
+    </div>
+</div>
+
+
+<div id="modal-eliminar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal Registrar-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title letra-prompt">¿Seguro que desea eliminar este repote?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="@Url.Action("Eliminar", "Reporte", new { Id = Model.Id })" type="button" class="btn btn-primary">Eliminar</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -26,51 +26,90 @@ namespace Proyecto_Integracion.WebApp.Controllers
         public ActionResult Busqueda(int? page, TipoIncidente incidente)
         {
             Estanteria e = new Estanteria();
-            List<Proyecto_Integracion.Models.Reporte> reportes = e.Buscar(incidente);
+            List<Proyecto_Integracion.Models.Reporte> reportes = e.Buscar(incidente, 0, int.MaxValue);
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(reportes.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult BusquedaGeneral(FormCollection collection, int? page, String termino, int filtro = 5)
-        {
-            Estanteria e = new Estanteria();
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            if (String.IsNullOrEmpty(termino))
+        public ActionResult BusquedaGeneral(FormCollection collection, String buscar, int page = 1, int cantResult = 10, int filtro = 5)
             {
-                termino = "";
+            Estanteria e = new Estanteria();
+            var incidente = new TipoIncidente();
+            if (String.IsNullOrEmpty(buscar))
+            {
+                buscar = "";
             }
             var result = new List<Reporte>();
             switch (filtro)
             {
                 case 1: //Dirección
-                    result = e.BuscarPorDireccion(termino);
+                    result = e.BuscarPorDireccion(buscar, page, cantResult);
                     break;
                 case 2: //Fecha
-                    termino = Request.Form["date"];
-                    result = e.BuscarPorFecha(termino);
+                    if(buscar.Equals(""))
+                    buscar = Request.Form["date"];
+                    result = e.BuscarPorFecha(buscar, page, cantResult);
                     break;
                 case 3: //Palabra Clave
-                    result = e.BuscarPorPalabra(termino);
+                    result = e.BuscarPorPalabra(buscar, page, cantResult);
                     break;
                 case 4: //Ubicacion usamos radio de 40. ALL
                     try
                     {
                         var p = Utils.SessionManager.PerfilActivo();
                         Ubicacion u = p.Ubicacion;
-                        var radio = 40;
-                        result = e.Buscar(termino, u, radio);
+                        var radio = 1;
+                        result = e.Buscar(buscar, u, page, cantResult, radio);
                     }
                     catch (Exception ex)
                     { }
                     break;
                 case 5: //All
-                    result = e.BuscarPorAll(termino);
+                    result = e.BuscarPorAll(buscar, page, cantResult);
+                    break;
+                case 6:
+                    switch (buscar)
+                    {
+                        case "#1":
+                            incidente = TipoIncidente.Homicidio;
+                            break;
+                        case "#2":
+                            incidente = TipoIncidente.Suicidio;
+                            break;
+                        case "#3":
+                            incidente = TipoIncidente.RoboAsalto;
+                            break;
+                        case "#4":
+                            incidente = TipoIncidente.Violacion;
+                            break;
+                        case "#5":
+                            incidente = TipoIncidente.ExplotacionSexual;
+                            break;
+                    }
+                    result = e.Buscar(incidente, page, cantResult);
                     break;
             }
-            this.ViewBag.Termino = termino;
-            return View(result.ToPagedList(pageNumber, pageSize));
+            this.ViewBag.Page = page;
+            this.ViewBag.Results = cantResult;
+            this.ViewBag.Termino = buscar;
+            this.ViewBag.Filtro = filtro;
+
+            if (result.Count == cantResult)
+            {
+                this.ViewBag.More = 1;
+            }
+            else
+            {
+                this.ViewBag.More = 0;
+            }
+
+            return View(result);
+        }
+
+        public ActionResult Faq()
+        {
+            return View();
         }
     }
 }

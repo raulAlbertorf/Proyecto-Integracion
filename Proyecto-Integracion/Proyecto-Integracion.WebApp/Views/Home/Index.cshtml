@@ -14,8 +14,7 @@
         $(".navbar-search").hide();
 
         $("#date").datepicker({
-            dateFormat: 'yy-mm-dd',
-            orientation: 'bottom'
+            dateFormat: 'yy-mm-dd'
         });
     </script>
     <script src="~/Contents/js/maps-buscador.js"></script>
@@ -40,6 +39,15 @@
         <br />
         <br />
 
+        <div class="collapse" id="collapseFecha">
+            <div class="card card-block">
+                @Html.Partial("~/Views/Home/_CollapseDropDown_Fecha.cshtml")
+                <br />
+                <hr />
+            </div>
+        </div>
+
+
         <div class="collapse" id="collapseAll">
             @Html.Partial("~/Views/Home/_CollapseDropDown_All.cshtml")
             <br />
@@ -54,13 +62,6 @@
             </div>
         </div>
 
-        <div class="collapse" id="collapseFecha">
-            <div class="card card-block">
-                @Html.Partial("~/Views/Home/_CollapseDropDown_Fecha.cshtml")
-                <br />
-                <hr />
-            </div>
-        </div>
 
 
         <div class="collapse" id="collapsePalabra">
@@ -84,15 +85,15 @@
 
     <div class="panel panel-default panel-centro-ayuda">
         <div class="panel-heading">
-            <h3 class="panel-title">Incidentes en mis alrededores</h3>
+            <h3 class="panel-title">Ultimos Incidentes</h3>
         </div>
         <div class="panel-body" id="map">
         </div>
     </div>
 
-@{
-    var ubicacion = Proyecto_Integracion.WebApp.Utils.GeoLocation.ubicacion();
-    var reportes = Model.Buscar("", ubicacion, 20);
+    @{
+        //var ubicacion = Proyecto_Integracion.WebApp.Utils.GeoLocation.ubicacion();
+        var reportes = Model.BuscarPorAll("", 0, 10);
         <input id="report_count" value="@reportes.Count" hidden />
         var i = 0;
         foreach (var reporte in @reportes)
@@ -100,53 +101,46 @@
 
 
             var incidente = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(reporte.Incidente);
-                <input id="incidente+@i" value="@reporte.Incidente" hidden />
-                <input id="Latitud+@i" name="Latitud+@i" value="@reporte.Ubicacion.Latitud" hidden />
+            <input id="incidente+@i" value="@reporte.Incidente" hidden />
+            <input id="Latitud+@i" name="Latitud+@i" value="@reporte.Ubicacion.Latitud" hidden />
                 <input id="Longitud+@i" value="@reporte.Ubicacion.Longitud" hidden />
-                i++;
+            i++;
 
 
-            }
         }
+    }
 
 
 
-                <div class="row">
-                    <hr />
-                    <div class="col-md-7">
-                        <h2 class="featurette-heading letra-prompt">¿Te  han asaltado y no hiciste nada?</h2>
-                        <p class="lead">¿Por qué mejor nos ayudas reportando todos esos delitos?</p>
-                    </div>
-                    <div class="col-md-5">
-                        <div style="background-color: white">
-                            <img class="img-responsive center-block img-thumbnail" src="~/Contents/img/Index/stop.jpg" alt="Generic placeholder image">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-5">
-                        <img class="img-responsive center-block img-thumbnail" src="~/Contents/img/Index/manos_sucias.jpg" alt="Generic placeholder image">
-                    </div>
-                    <div class="col-md-7">
-                        <h2 class="featurette-heading letra-prompt">Somos una aplicación que se interesa por tu bienestar poniento a tu alcance informacion y ayuda para incidentes delictivos por tu CDMX.</h2>
-                        <p class="lead">Nuestro objetivo es ayudarte a tener mejor seguridad conociendo la incidencia de delitos.</p>
-                        <p class="lead"><big><a href="@Url.Action("Crear", "Cuenta")">Regístrate</a>, <a href="@Url.Action()"> busca un delito</a><big> y comienza a cuidar de ti y tu familia</p>
-                    </div>
-                </div>
-                <br />
-                <br />
-                <br />
-
-                <ul>
-                    @{
-                        foreach (var value in Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetValues(Proyecto_Integracion.Models.TipoIncidente.ExplotacionSexual))
-                        {
-
-                            var description = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(value);
-                            <li>@Html.DisplayFor(e => description)</li>
-                        }
-                    }
-
-                </ul>
+    <div class="row">
+        <hr />
+        <div class="col-md-7">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2 class="featurette-heading letra-prompt">¿Te  han asaltado y no hiciste nada?</h2>
+            <p class="lead">Reporta tus incidentes y asi nos ayudamos todos a tener más información y más seguridad.</p>
+        </div>
+        <div class="col-md-5">
+            <div style="background-color: white">
+                <img class="img-responsive center-block img-thumbnail" src="~/Contents/img/Index/stop.jpg" alt="Generic placeholder image">
             </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <img class="img-responsive center-block img-thumbnail" src="~/Contents/img/Index/manos_sucias.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+            <h2 class="featurette-heading letra-prompt">Somos una aplicación que se interesa por tu bienestar, por ello ponemos a tu alcance información de incidentes delictivos por tu CDMX.</h2>
+            <p class="lead">Nuestro objetivo es ayudarte a tener mejor seguridad conociendo la incidencia de delitos.</p>
+            <p class="lead"><big><a class="texto-naranja" href="@Url.Action("Crear", "Cuenta")">Regístrate</a></big>, busca un delitoy comienza a cuidar de ti y tu familia.</p>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+</div>

@@ -1,5 +1,4 @@
-﻿@model PagedList.IPagedList<Proyecto_Integracion.Models.Reporte>
-@using PagedList.Mvc;
+﻿@model IEnumerable<Proyecto_Integracion.Models.Reporte>
 @{
     Layout = "~/Views/_Layout.cshtml";
     //var Perfil_Activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
@@ -35,19 +34,28 @@
                 <h4 class="panel-title"> Resultados de Busqueda</h4>
             </div>
             <div class="panel-body">
-                <div class="list-group text-right">
-                    <label>Pagina @( Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</label>
-                    @Html.PagedListPager(Model, page => Url.Action("BusquedaGeneral", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, termino = ViewBag.Termino }))
+                <div class="list-group">
                     <div class="row" style="display: flex; flex-wrap: wrap;">
                         <input id="report_count" value="@Model.Count()" hidden />
-                        @{
-                            var i = 0;
+
+                        @if (Model.Count() == 0)
+                        {
+                            <br />
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="container">
+                                        <p class="text-center" id="no-resultados">No se han encontrado resultados para "<strong>@ViewBag.Termino</strong>"</p>
+                                    </div>
+                                </div>
+                        }
+                        @{var i = 0; }
+                        @try
+                        {
                             foreach (var reporte in Model)
                             {
 
 
                                 <div class="col-md-6 reporte" style="display: flex; flex-wrap: wrap;">
-                                    <a href="@Url.Action("Detalles", "Reporte", new { Id = reporte.Id})" class="list-group-item">
+                                    <a href="@Url.Action("Detalles", "Reporte", new { Id = reporte.Id })" class="list-group-item">
 
                                         <div class="media">
                                             <div class="media-left media-middle">
@@ -57,7 +65,7 @@
                                                 @{
                                                     var incidente = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(reporte.Incidente);
                                                     <input id="incidente+@i" value="@reporte.Incidente" hidden />
-                                                    <h4 class="media-heading"><strong>Incidente: </strong>@incidente</h4>
+                                                        <h4 class="media-heading"><strong>Incidente: </strong>@incidente</h4>
                                                 }
                                                 <p><strong>Descripción: </strong>@reporte.Descripcion</p>
                                                 <p><strong>Fecha: </strong> @reporte.FechaExpedicion.ToString("d")</p>
@@ -69,15 +77,47 @@
 
                                     </a>
                                 </div>
-                                                        i++;
+                                                            i++;
+                                                        }
                                                     }
-                        }
+                                                    catch (Exception ex)
+                                                    {
+                                                        <p class="text-center">... No hay resultados de busqueda ...</p>
+                                                    }
+                       
                     </div>
                 </div>
 
-
-
             </div>
+            <div class="panel-footer">
+                @if (ViewBag.Page > 1)
+                {
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page - 1 , buscar= ViewBag.Termino, cantResult = ViewBag.Results, filtro = ViewBag.Filtro })"
+                       class="btn btn-default">
+                        &laquo; Atras
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
+                        &laquo; Atras
+                    </a>
+                }
+                @if (ViewBag.More > 0)
+                {
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page + 1 , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )"
+                       class="btn btn-default">
+                        Siguiente &raquo;
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
+                        Siguiente &raquo;
+                    </a>
+                }
+            </div>
+
         </div>
     </div>
 </div>

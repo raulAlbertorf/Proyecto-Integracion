@@ -1,7 +1,9 @@
 --Delimiter $$
 DROP PROCEDURE IF EXISTS sp_Reporte_Seleccionar_Reportes_Termino_Incidente $$
 CREATE PROCEDURE sp_Reporte_Seleccionar_Reportes_Termino_Incidente (
-	inIncidente INT
+	inIncidente INT,
+	inPage int,
+	inCantResult int
 )
 BEGIN
 SELECT 
@@ -30,7 +32,8 @@ INNER JOIN cuenta AS c
 	ON p.Cuenta_Email =  c.Email
     WHERE
     r.Incidente = inIncidente
-	ORDER BY r.Fecha desc;
+	ORDER BY r.Fecha desc
+    LIMIT inPage, inCantResult;
     
     
     

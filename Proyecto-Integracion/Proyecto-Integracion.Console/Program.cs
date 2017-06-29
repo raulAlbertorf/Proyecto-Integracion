@@ -26,7 +26,7 @@ namespace Proyecto_Integracion.Console
             //r.Modificar();
             Estanteria e = new Estanteria();
             //List<Reporte>  reportes =  e.BuscarPorAll("Descripcion10", 0, 10);
-            List<Reporte> reportes = e.Buscar(TipoIncidente.RoboAsalto);
+            //List<Reporte> reportes = e.Buscar(TipoIncidente.RoboAsalto);
             //List<Reporte>  reportes =  e.Buscar("", ubicacion, 0, 10, 40);
 
             //p.Seleccionar("email1@correo.com");
