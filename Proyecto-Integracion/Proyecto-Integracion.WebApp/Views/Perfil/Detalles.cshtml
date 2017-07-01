@@ -15,6 +15,16 @@
 
 
 <div class="container">
+    <br />
+    @if(Perfil_Activo != null && Cuenta_Activa != null && Perfil_Activo.Id == Model.Id)
+    {
+    <h2 class="letra-prompt"><strong>Mi Perfil</strong></h2>
+    }
+    else
+    {
+        <h2 class="letra-prompt"><strong>Detalles de Perfil</strong></h2>
+    }
+    <hr />
     <div class="col-md-3">
         <div class="thumbnail text-center">
             <img src="~/Contents/img/perfiles/@Perfil_Activo.UrlImagen" alt="Imagen perfil">

@@ -10,79 +10,14 @@
 }
 @section Scripts{
     <!--<script src="~/Contents/js/Google-Maps-Night.js"></script>-->
-    <script type="text/javascript">
-        $(".navbar-search").hide();
-
-        $("#date").datepicker({
-            dateFormat: 'yy-mm-dd'
-        });
-    </script>
     <script src="~/Contents/js/maps-buscador.js"></script>
 }
 
 
 <div class="container">
-    <div class="page-header letra-prompt text-justify">
-        <h1>ReportIt es una nueva forma de publicar incidentes delictivos.</h1>
-        <h1>¡<a class="texto-naranja" href="@Url.Action("Crear", "Cuenta")">Registrate</a> y comienza a reportar todo! <small>Si ves algo di algo</small></h1>
-    </div>
-    <div class="jumbotron text-center">
-        <h1 class="letra-prompt">Busca algun incidente</h1>
-        <div class="btn-group btn-group-lg filtros" role="group" aria-label="...">
-            <button type="button" class="btn btn-default" id="btn-all" data-toggle="collapse" href="#collapseAll" aria-expanded="true" aria-controls="collapseAll">Todo</button>
-            <button type="button" class="btn btn-default" id="btn_direccion" data-toggle="collapse" href="#collapseDireccion" aria-expanded="true" aria-controls="collapseDireccion">Dirección</button>
-            <button type="button" class="btn btn-default" id="btn_fecha" data-toggle="collapse" href="#collapseFecha" aria-expanded="true" aria-controls="collapseFecha">Fecha</button>
-            <button type="button" class="btn btn-default" id="btn_palabrac" data-toggle="collapse" href="#collapsePalabra" aria-expanded="true" aria-controls="collapsePalabra">Palabra clave</button>
-            <button type="button" class="btn btn-default" id="btn_incidente" data-toggle="collapse" href="#collapseIncidente" aria-expanded="true" aria-controls="collapseIncidente">Tipo de delito</button>
-        </div>
-        <br />
-        <br />
-        <br />
-
-        <div class="collapse" id="collapseFecha">
-            <div class="card card-block">
-                @Html.Partial("~/Views/Home/_CollapseDropDown_Fecha.cshtml")
-                <br />
-                <hr />
-            </div>
-        </div>
-
-
-        <div class="collapse" id="collapseAll">
-            @Html.Partial("~/Views/Home/_CollapseDropDown_All.cshtml")
-            <br />
-            <hr />
-        </div>
-
-        <div class="collapse" id="collapseDireccion">
-            <div class="card card-block">
-                @Html.Partial("~/Views/Home/_CollapseDropDown_Direccion.cshtml")
-                <br />
-                <hr />
-            </div>
-        </div>
-
-
-
-        <div class="collapse" id="collapsePalabra">
-            <div class="card card-block">
-                @Html.Partial("~/Views/Home/_CollapseDropDown_Palabra.cshtml")
-                <br />
-                <hr />
-            </div>
-        </div>
-
-
-        <div class="collapse" id="collapseIncidente">
-            <div class="card card-block">
-                @Html.Partial("~/Views/Home/_CollapseDropDown_TipoIncidente.cshtml", new Proyecto_Integracion.Models.Reporte())
-                <br />
-                <hr />
-            </div>
-        </div>
-        <br />
-    </div>
-
+    <br />
+    <hr />
+    <br />
     <div class="panel panel-default panel-centro-ayuda">
         <div class="panel-heading">
             <h3 class="panel-title">Ultimos Incidentes</h3>

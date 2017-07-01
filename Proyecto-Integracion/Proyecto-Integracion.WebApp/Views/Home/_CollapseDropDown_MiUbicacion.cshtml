@@ -1,0 +1,15 @@
+﻿@using (Html.BeginForm("BusquedaGeneral", "Home", new { page = 0, cantResult = 10, filtro = 4, buscar = ViewBag.Termino }, FormMethod.Post))
+{//Busqueda por Mi Ubicación
+    <fieldset>
+        <div class="col-lg-offset-1 col-lg-10">
+            <h3 class="text-left">Mi Ubicación</h3>
+            <div class="input-group">
+                <input type="text" name="buscar" id="buscar" class="form-control input-lg" placeholder="Busca un incidente por cualquier dato en tus alrededores..." />
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search texto-naranja"></i></button>
+                </span>
+            </div>
+        </div>
+    </fieldset>
+}
+

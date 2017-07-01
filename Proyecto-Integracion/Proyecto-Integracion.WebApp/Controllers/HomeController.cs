@@ -107,6 +107,18 @@ namespace Proyecto_Integracion.WebApp.Controllers
             return View(result);
         }
 
+        [HttpGet]
+        public ActionResult BusquedaAvanzada()
+        {
+            return View();
+        }
+
+        public ActionResult BusquedaAvanzada(FormCollection collection, String palabra, String descripcion, TipoIncidente incidente, int page = 1, int cantResult = 10)
+        {
+            Estanteria e = new Estanteria();
+            return View();
+        }
+
         public ActionResult Faq()
         {
             return View();

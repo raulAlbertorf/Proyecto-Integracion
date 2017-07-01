@@ -15,7 +15,7 @@ namespace Proyecto_Integracion.WebApp.Utils
         /// <summary>
         /// Metodo que muestra la direccion completa dado una ubicacion
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param>Ubicacion</param>
         /// <returns>String</returns>
         public static string direccion( Ubicacion u )
@@ -27,7 +27,7 @@ namespace Proyecto_Integracion.WebApp.Utils
         /// <summary>
         /// Metodo que muestra la ciudad dado una ubicacion
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param>Ubicacion</param>
         /// <returns>String</returns>
         public static string ciudad( Ubicacion u )
@@ -49,7 +49,7 @@ namespace Proyecto_Integracion.WebApp.Utils
         /// <summary>
         /// Metodo que muestra la region dado una ubicacion
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param>Ubicacion</param>
         /// <returns>String</returns>
         public static string region( Ubicacion u )
@@ -71,74 +71,34 @@ namespace Proyecto_Integracion.WebApp.Utils
         /// <summary>
         /// Metodo que obtiene una ubicacion usando la IP.
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param></param>
         /// <returns>Ubiczcion</returns>
         public static Ubicacion ubicacion( )
         {
-            //var ip = getUserIP( );
-            //var url = "http://freegeoip.net/xml/" + ip;
-            //WebRequest request = WebRequest.Create( url );
-            //using ( WebResponse response = ( HttpWebResponse ) request.GetResponse( ) )
-            //{
-            //    using ( StreamReader reader = new StreamReader( response.GetResponseStream( ) , Encoding.UTF8 ) )
-            //    {
-            //        DataSet dsResult = new DataSet( );
-            //        dsResult.ReadXml( reader );
+            var ip = getUserIP();
+            var url = "http://freegeoip.net/xml/" + ip;
+            WebRequest request = WebRequest.Create(url);
+            using (WebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                {
+                    DataSet dsResult = new DataSet();
+                    dsResult.ReadXml(reader);
 
-            //        DataRow row = dsResult.Tables[ "response" ].Select( )[ 0 ];
-            //        Ubicacion u = new Ubicacion( );
-            //        u.Latitud= float.Parse(row["Latitude"].ToString(), System.Globalization.CultureInfo.InvariantCulture);
-            //        u.Longitud = float.Parse(row["Longitude"].ToString(), System.Globalization.CultureInfo.InvariantCulture);
-            //        return u;
-            //    }
-            //}
-            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.High);
-            Ubicacion u = new Ubicacion();
-            var permis = watcher.Permission;
-            watcher.Start(true);
-            var pos = watcher.Position.Location;
-            u.Latitud = float.Parse(pos.Latitude.ToString());
-            u.Longitud = float.Parse(pos.Longitude.ToString());
-            //watcher.PositionChanged += (sender, e) =>
-            //{
-            //    var coordinate = e.Position.Location;
-            //    u.Latitud = float.Parse(coordinate.Latitude.ToString());
-            //    u.Longitud = float.Parse(coordinate.Longitude.ToString());
-            //    // Uncomment to get only one event.
-            //    watcher.Stop(); 
-            //};
-
-            // Begin listening for location updates.
-            //watcher.Start();
-            //var por = watcher.Position;
-            //u.Latitud = float.Parse(por.Location.Latitude.ToString());
-            //u.Longitud = float.Parse(por.Location.Longitude.ToString());
-
-            //watcher.TryStart(false, TimeSpan.FromSeconds(3));
-            //var whereat = watcher.Position.Location;
-
-            //    var Lat = whereat.Latitude.ToString("0.000000");
-            //    var Lon = whereat.Longitude.ToString("0.000000");
-
-
-            //    //optional parameters for future use
-            //    whereat.Altitude.ToString();
-            //    whereat.HorizontalAccuracy.ToString();
-            //    whereat.VerticalAccuracy.ToString();
-            //    whereat.Course.ToString();
-            //    whereat.Speed.ToString();
-
-            //u.Latitud = float.Parse(Lat);
-            //u.Longitud = float.Parse(Lon);
-            watcher.Stop();
-            return u;
+                    DataRow row = dsResult.Tables["response"].Select()[0];
+                    Ubicacion u = new Ubicacion();
+                    u.Latitud = float.Parse(row["Latitude"].ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                    u.Longitud = float.Parse(row["Longitude"].ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                    return u;
+                }
+            }
         }
 
         /// <summary>
         /// Metodo que obtiene una ubicacion dado una ciudad
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param>string</param>
         /// <returns>Ubicacion</returns>
         public static Ubicacion buscar(string ciudad)
@@ -169,7 +129,7 @@ namespace Proyecto_Integracion.WebApp.Utils
         /// <summary>
         /// Metodo que obtiene datos desde la API de Google
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param>Ubicacion</param>
         /// <returns>DataRow</returns>
         private static DataRow getDataRow( Ubicacion u )
@@ -192,7 +152,7 @@ namespace Proyecto_Integracion.WebApp.Utils
         /// <summary>
         /// Metodo que la IP del Usuario
         /// </summary>
-        /// (sflores)
+        /// (rruvalcaba)
         /// <param>Ubicacion</param>
         /// <returns>DataRow</returns>
         private static string getUserIP( )

@@ -25,6 +25,7 @@ namespace Proyecto_Integracion.Console
             //r.Perfil = p;
             //r.Modificar();
             Estanteria e = new Estanteria();
+            var result = e.BusquedaAvanzada(0, 10, null, null, TipoIncidente.RoboAsalto, null, null);
             //List<Reporte>  reportes =  e.BuscarPorAll("Descripcion10", 0, 10);
             //List<Reporte> reportes = e.Buscar(TipoIncidente.RoboAsalto);
             //List<Reporte>  reportes =  e.Buscar("", ubicacion, 0, 10, 40);

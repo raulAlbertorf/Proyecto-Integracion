@@ -40,5 +40,18 @@
   font-size: larger;
 }
 
-.nav-search{
+
+.jumbotron{
+    background-color: white;
+    border: solid 2px black;
+}
+
+.filtros button:hover{
+    background-color: orange;
+    color: white;
+}
+
+.filtros button:focus{
+    background-color: orange !important;
+    color: white !important;
 }

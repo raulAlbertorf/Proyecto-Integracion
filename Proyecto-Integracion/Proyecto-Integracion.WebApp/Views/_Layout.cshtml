@@ -23,13 +23,13 @@
     <link rel="stylesheet" href="~/Contents/css/leaflet/leaflet.css" />
     
     <!--Datepicker-->
-    <link rel="stylesheet" href="~/Contents/css/bootstrap/datepicker.css" />
+    <!--<link rel="stylesheet" href="~/Contents/css/bootstrap/datepicker.css" />-->
     
     <!--jquery-ui-->
     <link rel="stylesheet" href="~/Contents/css/bootstrap/jquery-ui.css" />
 
-    <!--Datepicker-->
-    <!--<link rel="stylesheet" href="~/Contents/css/datepicker.css" />-->
+    <!--bootstrap-datepicker-->
+    <link rel="stylesheet" href="~/Contents/css/bootstrap/bootstrap-datepicker.css" />
 
     <!--Pluggin leaflet.awesome-markers-->
     <link rel="stylesheet" href="~/Contents/css/leaflet/leaflet.awesome-markers.css" />
@@ -66,9 +66,15 @@
 
     <!--leaflet-->
     <script src="~/Contents/js/leaflet.js"></script>
-    
-    <!--Datepicker-->
+
+    <!--bootstrap-datepicker.es.min-->
+    <script src="~/Contents/js/bootstrap-datepicker.es.min.js"></script>
+
+    <!--bootstrap-datepicker-->
     <script src="~/Contents/js/bootstrap-datepicker.js"></script>
+
+    <!--bootstrap-datepicker-->
+    <script src="~/Contents/js/bootstrap-datepicker.min.js"></script>
 
     <!--jquery-ui.min-->
     <script src="~/Contents/js/jquery-ui.js"></script>
@@ -88,7 +94,20 @@
     <!--Icon.draw-->
     <script src="~/Contents/js/leaflet.draw.js"></script>
 
+    <!--Collapse-->
+    <script type="text/javascript" src="~/Contents/js/collapse.js"></script>
+
     <!--Ir atras-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#date").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+
+    </script>
+
     <script type="text/javascript">
         function irAtras() {
             window.history.back();

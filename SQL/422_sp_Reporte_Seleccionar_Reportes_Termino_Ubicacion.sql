@@ -36,9 +36,13 @@ INNER JOIN cuenta AS c
     WHERE
     ( 6371 * acos( cos( radians(inUbicacion_Latitude) ) * cos( radians( U.Latitude ) ) * cos( radians( U.Longitude ) - radians(inUbicacion_Longitude) ) + sin( radians(inUbicacion_Latitude) ) * sin( radians( U.Latitude ) ) ) ) <= inRadio AND
     (r.Descripcion LIKE  CONCAT("%",inTermino,"%") 		OR
-    u.Delegacion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino , ' ', 2 ),' ',1) , '%') OR
-	CAST(r.Fecha AS date) = inTermino AND
-    YEAR(r.Fecha) = inTermino)
+    u.Delegacion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino , ' ', 2 ),' ',1) , '%')
+			OR
+		    r.Descripcion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino, ' ', -1 ),' ',2) , '%')
+		    OR
+            p.Nombre = inTermino
+            OR
+		    CAST(r.Fecha AS DATE)= inTermino)
 	ORDER BY r.Fecha desc
     LIMIT inPage, inCantResult;
     

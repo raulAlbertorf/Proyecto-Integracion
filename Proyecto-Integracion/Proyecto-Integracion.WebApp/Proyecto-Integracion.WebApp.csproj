@@ -125,6 +125,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.min.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.standalone.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.min.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.standalone.min.css" />
     <Content Include="Contents\css\bootstrap\bootstrap-select.css" />
     <Content Include="Contents\css\bootstrap\bootstrap-select.min.css" />
     <Content Include="Contents\css\bootstrap\bootstrap-theme.css" />
@@ -179,15 +187,29 @@
     <Content Include="Contents\img\perfiles\PICON_028.png" />
     <Content Include="Contents\img\perfiles\unknown-user.png" />
     <Content Include="Contents\js\bootstrap-confirmation.js" />
+    <Content Include="Contents\js\bootstrap-datepicker.es.min.js" />
     <Content Include="Contents\js\bootstrap-datepicker.js" />
+    <Content Include="Contents\js\bootstrap-datepicker.min.js" />
     <Content Include="Contents\js\bootstrap-select.js" />
     <Content Include="Contents\js\bootstrap-select.min.js" />
     <Content Include="Contents\js\bootstrap.js" />
     <Content Include="Contents\js\bootstrap.min.js" />
+    <Content Include="Contents\js\collapse-Index.js" />
+    <Content Include="Contents\js\collapse.js" />
     <Content Include="Contents\js\countCharacters.js" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Contents\css\datepicker.less" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.min.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker.standalone.min.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.min.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.standalone.min.css.map" />
     <None Include="Contents\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Contents\js\calendario.js" />
+    <Content Include="Contents\js\Datepicker.js" />
     <Content Include="Contents\js\Icon.Canvas.js" />
     <Content Include="Contents\js\imagen.js" />
     <Content Include="Contents\js\jquery-ui.js" />
@@ -268,6 +290,8 @@
     <Content Include="Views\Home\_CollapseDropDown_Palabra.cshtml" />
     <Content Include="Views\Home\BusquedaGeneral.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
+    <Content Include="Views\Home\_CollapseDropDown_MiUbicacion.cshtml" />
+    <Content Include="Views\Home\BusquedaAvanzada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
