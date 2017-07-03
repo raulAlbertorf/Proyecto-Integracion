@@ -198,7 +198,6 @@
     <Content Include="Contents\js\collapse.js" />
     <Content Include="Contents\js\countCharacters.js" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Contents\css\datepicker.less" />
     <Content Include="Contents\css\bootstrap\bootstrap-datepicker.css.map" />
     <Content Include="Contents\css\bootstrap\bootstrap-datepicker.min.css.map" />
     <Content Include="Contents\css\bootstrap\bootstrap-datepicker.standalone.css.map" />
@@ -292,6 +291,7 @@
     <Content Include="Views\Home\Faq.cshtml" />
     <Content Include="Views\Home\_CollapseDropDown_MiUbicacion.cshtml" />
     <Content Include="Views\Home\BusquedaAvanzada.cshtml" />
+    <Content Include="Views\Home\ResultadosAvanzados.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

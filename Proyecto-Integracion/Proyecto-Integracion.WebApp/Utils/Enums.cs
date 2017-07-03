@@ -113,10 +113,10 @@ namespace Proyecto_Integracion.WebApp.Utils
             return new SelectList(items);
         }
 
-       public static TipoIncidente Change(T value)
+       public static TipoIncidente Change(String value)
         {
             String inci = null;
-            switch (value.ToString())
+            switch (value)
             {
                 case "Homicidio":
                     inci = "Homicidio";

@@ -9,6 +9,65 @@ namespace Proyecto_Integracion.Models
 {
     public class Estanteria
     {
+        public List<Reporte> BusquedaAvanzada(int pagina, int cantResult, String palabra, String fecha, TipoIncidente incidente, String direccion, String nombrePerfil, Ubicacion ubicacion, int radio)
+        {
+            int index = pagina;
+            if (pagina > 0)
+                index = cantResult * (pagina - 1);
+
+            var reportes = new List<Reporte>();
+            try
+            {
+                var command = new MySqlCommand() { CommandText = "sp_Estanteria_Busqueda_Avanzada_Ubicacion", CommandType = System.Data.CommandType.StoredProcedure };
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPalabra", Direction = System.Data.ParameterDirection.Input, Value = palabra });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inFecha", Direction = System.Data.ParameterDirection.Input, Value = fecha });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inIncidente", Direction = System.Data.ParameterDirection.Input, Value = (int)incidente });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inDireccion", Direction = System.Data.ParameterDirection.Input, Value = direccion });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPerfil", Direction = System.Data.ParameterDirection.Input, Value = nombrePerfil });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inUbicacion_Latitude", Direction = System.Data.ParameterDirection.Input, Value = ubicacion.Latitud });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inUbicacion_Longitude", Direction = System.Data.ParameterDirection.Input, Value = ubicacion.Longitud });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inRadio", Direction = System.Data.ParameterDirection.Input, Value = radio });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inPage", Direction = System.Data.ParameterDirection.Input, Value = index });
+                command.Parameters.Add(new MySqlParameter() { ParameterName = "inCantResult", Direction = System.Data.ParameterDirection.Input, Value = cantResult });
+                var datos = DB.GetDataSet(command);
+
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < datos.Tables[0].Rows.Count; i++)
+                    {
+                        Reporte reporte = new Reporte();
+                        reporte.Id = (Convert.ToInt64(datos.Tables[0].Rows[i]["Reporte_Id"]));
+                        reporte.Descripcion = (datos.Tables[0].Rows[i]["Reporte_Descripcion"].ToString());
+                        reporte.FechaExpedicion = Convert.ToDateTime(datos.Tables[0].Rows[i]["Reporte_Fecha"]);
+                        reporte.Incidente = (TipoIncidente)(datos.Tables[0].Rows[i]["Reporte_Incidente"]);
+                        reporte.Perfil = new Perfil();
+                        reporte.Perfil.Id = (Convert.ToInt64(datos.Tables[0].Rows[i]["Perfil_Id"]));
+                        reporte.Perfil.Nombre = (datos.Tables[0].Rows[i]["Perfil_Nombre"].ToString());
+                        reporte.Perfil.UrlImagen = (datos.Tables[0].Rows[i]["Perfil_UrlImagen"].ToString());
+                        reporte.Perfil.Cuenta = new Cuenta();
+                        reporte.Perfil.Cuenta.Email = (datos.Tables[0].Rows[i]["Cuenta_Email"].ToString());
+                        reporte.Perfil.Cuenta.Contrasena = (datos.Tables[0].Rows[i]["Cuenta_Contrasena"].ToString());
+                        reporte.Ubicacion = new Ubicacion();
+                        var latitud = Convert.ToDouble(datos.Tables[0].Rows[i]["Ubicacion_Latitud"]).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        var longitud = Convert.ToDouble(datos.Tables[0].Rows[i]["Ubicacion_Longitud"]).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        reporte.Ubicacion.Latitud = float.Parse(latitud, System.Globalization.CultureInfo.InvariantCulture);
+                        reporte.Ubicacion.Longitud = float.Parse(longitud, System.Globalization.CultureInfo.InvariantCulture);
+                        reporte.Ubicacion.Direccion = datos.Tables[0].Rows[i]["Ubicacion_Direccion"].ToString();
+                        reportes.Add(reporte);
+
+                    }
+                    return reportes;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+            }
+            return reportes;
+        }
+
         public List<Reporte> BusquedaAvanzada(int pagina, int cantResult, String palabra, String fecha, TipoIncidente incidente, String direccion, String nombrePerfil)
         {
             int index = pagina;

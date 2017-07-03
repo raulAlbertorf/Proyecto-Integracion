@@ -30,9 +30,9 @@
                         <i class="fa fa-question-circle" aria-hidden="true"></i> FAQ
                     </a>
                 </li>
-                <li>
+                <li class="busqueda_avanzada">
                     <a href="@Url.Action("BusquedaAvanzada", "Home")">
-                        <i class="fa fa-search-plus" aria-hidden="true"></i>Busqueda Avanzada
+                        <i class="fa fa-search-plus" aria-hidden="true"></i> Busqueda Avanzada
                     </a>
                 </li>
             </ul>
@@ -72,7 +72,7 @@
 </nav>
 
 
-<div class="page-header letra-prompt text-justify">
+<div class="page-header letra-prompt text-justify header_1">
     @if (Perfil_activo != null && cuenta_activa != null)
     {
         <h1>ReportIt es una nueva forma de publicar incidentes delictivos.</h1>
@@ -84,7 +84,7 @@
     <h1>¡<a class="texto-naranja" href="@Url.Action("Crear", "Cuenta")">Registrate</a> y comienza a reportar todo! <small>Si ves algo di algo</small></h1>
     }
 </div>
-<div class="jumbotron text-center">
+<div class="jumbotron text-center header_2" style="margin-top:5px">
     <h1 class="letra-prompt label_busca">Busca algun incidente</h1>
     <div class="btn-group btn-group-lg filtros" role="group" aria-label="...">
         <button type="button" class="btn btn-default" id="btn_all" data-toggle="collapse" href="#collapseAll" aria-expanded="true" aria-controls="collapseAll">Todo</button>

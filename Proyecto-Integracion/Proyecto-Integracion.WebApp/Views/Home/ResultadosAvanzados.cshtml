@@ -4,6 +4,12 @@
     ViewBag.Title = "Resultados";
     //var Perfil_Activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
     //var Cuenta_Activa = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
+    Proyecto_Integracion.Models.TipoIncidente incidente_buscado = 0;
+    if (ViewBag.Incidente != "0")
+    {
+        incidente_buscado = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.Change(ViewBag.Incidente);
+    }
+
 }
 
 @section Styles{
@@ -34,8 +40,38 @@
 
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title"> Resultados de Busqueda : <strong>@ViewBag.Termino</strong></h4>
+            <div class="panel-heading">     
+                    @{
+                        String palabra = null;
+                        String fecha = null;
+                        String direccion = null;
+                        String nombrePerfil =null;
+                        String incidente_des = null;
+                        if (ViewBag.Palabra != null)
+                        {
+                            palabra = "Palabra: " + ViewBag.Palabra + ",";
+                        }
+                        if (ViewBag.Fecha != null)
+                        {
+                            fecha = " Fecha: " + ViewBag.Fecha + ",";
+                        }
+                        if (ViewBag.Direccion != null)
+                        {
+                            direccion = " Dirección: " + ViewBag.Direccion + ",";
+                        }
+                        if (ViewBag.NombrePerfil != null)
+                        {
+                            nombrePerfil = " Nombre de un Perfil: " + ViewBag.NombrePerfil + ",";
+                        }
+                        if (ViewBag.Incidente != "0")
+                        {
+                            incidente_des = " Tipo de Incidente: " + ViewBag.Incidente + ".";
+                        }
+                    }
+                        <h4 class="panel-title">
+                            Resultados de Busqueda Avanzada:  <strong>@palabra @fecha @direccion @nombrePerfil @incidente_des</strong>
+                        </h4>
+                        
             </div>
             <div class="panel-body">
                 <div class="list-group">
@@ -45,11 +81,11 @@
                         @if (Model.Count() == 0)
                         {
                             <br />
-                                <div class="col-xs-12 col-md-6">
-                                    <div class="container">
-                                        <p class="text-center" id="no-resultados">No se han encontrado resultados para "<strong>@ViewBag.Termino</strong>"</p>
-                                    </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="container">
+                                    <p class="text-center" id="no-resultados">No se han encontrado resultados para "<strong>@palabra @fecha @direccion @nombrePerfil @incidente_des</strong>"</p>
                                 </div>
+                            </div>
                         }
                         @{var i = 0; }
                         @try
@@ -69,7 +105,7 @@
                                                 @{
                                                     var incidente = Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.GetDisplayValue(reporte.Incidente);
                                                     <input id="incidente+@i" value="@reporte.Incidente" hidden />
-                                                        <h4 class="media-heading"><strong>Incidente: </strong>@incidente</h4>
+                                                    <h4 class="media-heading"><strong>Incidente: </strong>@incidente</h4>
                                                 }
                                                 <p><strong>Descripción: </strong>@reporte.Descripcion</p>
                                                 <p><strong>Fecha: </strong> @reporte.FechaExpedicion.ToString("d")</p>
@@ -88,7 +124,7 @@
                                                     {
                                                         <p class="text-center">... No hay resultados de busqueda ...</p>
                                                     }
-                       
+
                     </div>
                 </div>
 
@@ -96,27 +132,27 @@
             <div class="panel-footer">
                 @if (ViewBag.Page > 1)
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page - 1 , buscar= ViewBag.Termino, cantResult = ViewBag.Results, filtro = ViewBag.Filtro })"
+                    <a href="@Url.Action("ResultadosAvanzados", new { page = ViewBag.Page - 1, cantResult = ViewBag.Results, palabra = ViewBag.Palabra, ViewBag.Fecha, direccion = ViewBag.Direccion, nombrePerfil = ViewBag.NombrePerfil, incidente = incidente_buscado, radio = 40, latitud = ViewBag.Latitud, longitud = ViewBag.Longitud, check_miUbicacion = ViewBag.Check_Ubicacion})"
                        class="btn btn-default">
                         &laquo; Atras
                     </a>
                 }
                 else
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
+                    <a href="@Url.Action("ResultadosAvanzados", new { page = ViewBag.Page, cantResult = ViewBag.Results, palabra = ViewBag.Palabra, ViewBag.Fecha, direccion = ViewBag.Direccion, nombrePerfil = ViewBag.NombrePerfil, incidente = incidente_buscado, radio = 40, latitud = ViewBag.Latitud, longitud = ViewBag.Longitud, check_miUbicacion = ViewBag.Check_Ubicacion } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
                         &laquo; Atras
                     </a>
                 }
                 @if (ViewBag.More > 0)
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page + 1 , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )"
+                    <a href="@Url.Action("ResultadosAvanzados", new { page = ViewBag.Page + 1, cantResult = ViewBag.Results, palabra = ViewBag.Palabra, ViewBag.Fecha, direccion = ViewBag.Direccion, nombrePerfil = ViewBag.NombrePerfil, incidente = incidente_buscado, radio = 40, latitud = ViewBag.Latitud, longitud = ViewBag.Longitud, check_miUbicacion = ViewBag.Check_Ubicacion } )"
                        class="btn btn-default">
                         Siguiente &raquo;
                     </a>
                 }
                 else
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
+                    <a href="@Url.Action("ResultadosAvanzados", new { page = ViewBag.Page, cantResult = ViewBag.Results, palabra = ViewBag.Palabra, ViewBag.Fecha, direccion = ViewBag.Direccion, nombrePerfil = ViewBag.NombrePerfil, incidente = incidente_buscado, radio = 40, latitud = ViewBag.Latitud, longitud = ViewBag.Longitud, check_miUbicacion = ViewBag.Check_Ubicacion } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
                         Siguiente &raquo;
                     </a>
                 }

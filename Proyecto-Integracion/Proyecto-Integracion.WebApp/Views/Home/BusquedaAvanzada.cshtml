@@ -1,17 +1,111 @@
-﻿
+﻿@model Proyecto_Integracion.Models.Reporte
 @{
-    Layout = null;
+    Layout = "~/Views/_Layout.cshtml";
+    ViewBag.Title = "Búsqueda Avanzada";
+    var perfil_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
+    var cuenta_activa = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
 }
 
-<!DOCTYPE html>
+@section Scripts{
+    <script type="text/javascript">
+        $(".header_2").hide();
+        $(".header_1").hide();
+        $(".busqueda_avanzada").hide();
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>BusquedaAvanzada</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+        var check_clicked = function () {
+            if ($('#mi_ubicacion').is(':checked')) {
+                var input_check = document.getElementById('check_miUbicacion');
+                input_check.value = "True";
+            }
+            else {
+                var input_check = document.getElementById('check_miUbicacion');
+                input_check.value = "";
+            }
+        }
+
+        $(document).ready(function () {
+            $("#fecha").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <br />
+    <h2 class="letra-prompt"><strong>Busqueda Avanzada</strong></h2>
+    <hr />
+    @using (Html.BeginForm("ResultadosAvanzados", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <fieldset>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label letra-prompt">Palabra Clave</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="palabra" name="palabra" placeholder="Robo a mano armada, Lesión con arma blanca, etc.">
+                </div>
+                <p class="col-sm-4">
+                    Ingresa palabras de descripciones de reportes.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label letra-prompt">Fecha</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="fecha" name="fecha" placeholder="2017-02-21">
+                </div>
+                <p class="col-sm-4">
+                    Ingresa fecha de publicaciones de reportes.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label letra-prompt">Tipo de Incidente</label>
+                <div class="col-sm-6">
+                    @Html.EnumDropDownListFor(x => x.Incidente, "--Selecciona--", new { @class = "form-control" })
+                </div>
+                <p class="col-sm-4">
+                    Seleccióna el tipo de incidente de los reportes a consultar.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label letra-prompt">Dirección</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Azcapotzalco, Calle Viveros de la floresta, San pablo... ">
+                </div>
+                <p class="col-sm-4">
+                    Ingresa la dirección de reportes a consultar.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label letra-prompt">Nombre de un Perfil</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="nombrePerfil" name="nombrePerfil" placeholder="Alejandro, Monik_0223, RaulAB...">
+                </div>
+                <p class="col-sm-4">
+                    Filtra por el nombre del <strong>Perfil</strong> que realizo los reportes que desas buscar.
+                </p>
+            </div>
+            @if (perfil_activo != null && cuenta_activa != null)
+            {
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-6">
+                        <div class="checkbox">
+                            <label>
+                                <input id="mi_ubicacion" onclick="check_clicked()" type="checkbox"> Buscar por mi ubicación
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <input id="Latitud" name="Latitud" type="text" value="@perfil_activo.Ubicacion.Latitud" hidden />
+                <input id="Longitud" name="Longitud" type="text" value="@perfil_activo.Ubicacion.Longitud" hidden />
+                <input id="Id" name="Id" type="text" value="@perfil_activo.Ubicacion.Id" hidden />
+            }
+            <input id="check_miUbicacion" name="check_miUbicacion" type="text" hidden />
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6 text-right">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</div>

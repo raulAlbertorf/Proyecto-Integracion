@@ -1,7 +1,7 @@
 ﻿@model Proyecto_Integracion.Models.Reporte
 @{
     Layout = "~/Views/_Layout.cshtml";
-    ViewBag.Title = "Crear Reporte";
+    ViewBag.Title = "Detalles Reporte";
     var perfil_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
     var cuenta_activo = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
 }
@@ -9,7 +9,6 @@
 @section Styles{
     <link href="~/Contents/css/Maps.css" rel="stylesheet" />
     <link href="~/Contents/css/detalles-reporte.css" rel="stylesheet" />
-
 }
 
 @section Scripts{
@@ -21,10 +20,20 @@
     <h2 class="letra-prompt"><strong>Detalles de Reporte</strong></h2>
     <hr />
     <div class="col-md-2 text-center">
+        @if (perfil_activo != null && cuenta_activo != null && perfil_activo.Id == Model.Perfil.Id)
+        {
+            <a class="btn btn-primary" href="@Url.Action("MisReportes", "Perfil", new { Id = Model.Perfil.Id})">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                &nbsp;Regresar
+            </a>
+        }
+        else
+        {
         <a class="btn btn-success" onclick="irAtras()">
             <i class="fa fa-chevron-left" aria-hidden="true"></i>
             &nbsp;Regresar
         </a>
+        }
     </div>
     <div class="col-md-8">
         <div class="panel panel-default">

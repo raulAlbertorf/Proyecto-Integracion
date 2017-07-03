@@ -33,7 +33,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
         }
 
         public ActionResult BusquedaGeneral(FormCollection collection, String buscar, int page = 1, int cantResult = 10, int filtro = 5)
-            {
+        {
             Estanteria e = new Estanteria();
             var incidente = new TipoIncidente();
             if (String.IsNullOrEmpty(buscar))
@@ -47,8 +47,8 @@ namespace Proyecto_Integracion.WebApp.Controllers
                     result = e.BuscarPorDireccion(buscar, page, cantResult);
                     break;
                 case 2: //Fecha
-                    if(buscar.Equals(""))
-                    buscar = Request.Form["date"];
+                    if (buscar.Equals(""))
+                        buscar = Request.Form["date"];
                     result = e.BuscarPorFecha(buscar, page, cantResult);
                     break;
                 case 3: //Palabra Clave
@@ -107,16 +107,66 @@ namespace Proyecto_Integracion.WebApp.Controllers
             return View(result);
         }
 
-        [HttpGet]
         public ActionResult BusquedaAvanzada()
         {
             return View();
         }
 
-        public ActionResult BusquedaAvanzada(FormCollection collection, String palabra, String descripcion, TipoIncidente incidente, int page = 1, int cantResult = 10)
+        public ActionResult ResultadosAvanzados(String check_miUbicacion, String palabra, String fecha, String nombrePerfil, String direccion, TipoIncidente incidente, String Latitud = "0", String Longitud = "0", int page = 1, int cantResult = 10)
         {
             Estanteria e = new Estanteria();
-            return View();
+            var result = new List<Reporte>();
+
+            //var latitud = Convert.ToDouble(Latitud.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            //var longitud = Convert.ToDouble(Longitud.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            var u = new Ubicacion();
+            u.Latitud = float.Parse(Latitud.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            u.Longitud = float.Parse(Longitud.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+
+            if (palabra == "") palabra = null;
+            if (fecha == "") fecha = null;
+            if (direccion == "") direccion = null;
+            if (nombrePerfil == "") nombrePerfil = null;
+            if (check_miUbicacion == null) check_miUbicacion = "";
+            if (check_miUbicacion.Equals("True"))
+            {
+                result = e.BusquedaAvanzada(page, cantResult, palabra, fecha, incidente, direccion, nombrePerfil, u, 40);
+            }
+            else
+            {
+                result = e.BusquedaAvanzada(page, cantResult, palabra, fecha, incidente, direccion, nombrePerfil);
+            }
+            this.ViewBag.Page = page;
+            this.ViewBag.Results = cantResult;
+            this.ViewBag.Palabra = palabra;
+            this.ViewBag.Fecha = fecha;
+            this.ViewBag.Direccion = direccion;
+            this.ViewBag.NombrePerfil = nombrePerfil;
+            this.ViewBag.Check_Ubicacion = check_miUbicacion;
+            if (incidente != 0)
+                this.ViewBag.Incidente = Utils.EnumHelper<TipoIncidente>.GetDisplayValue(incidente);
+            else
+                this.ViewBag.Incidente = "0";
+            if (u != null)
+            {
+                this.ViewBag.Latitud = u.Latitud;
+                this.ViewBag.Longitud = u.Longitud;
+            }
+            else
+            {
+                this.ViewBag.Latitud = 0;
+                this.ViewBag.Longitud = 0;
+            }
+
+            if (result.Count == cantResult)
+            {
+                this.ViewBag.More = 1;
+            }
+            else
+            {
+                this.ViewBag.More = 0;
+            }
+            return View(result);
         }
 
         public ActionResult Faq()

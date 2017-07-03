@@ -34,9 +34,8 @@ INNER JOIN ubicacion AS u
 INNER JOIN cuenta AS c
 	ON p.Cuenta_Email =  c.Email
     WHERE
-    ( 6371 * acos( cos( radians(inUbicacion_Latitude) ) * cos( radians( U.Latitude ) ) * cos( radians( U.Longitude ) - radians(inUbicacion_Longitude) ) + sin( radians(inUbicacion_Latitude) ) * sin( radians( U.Latitude ) ) ) ) <= inRadio AND
-    (r.Descripcion LIKE  CONCAT("%",inTermino,"%") 		OR
-    u.Delegacion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino , ' ', 2 ),' ',1) , '%')
+    ( 6371 * acos( cos( radians(inUbicacion_Latitude) ) * cos( radians( u.Latitude ) ) * cos( radians( u.Longitude ) - radians(inUbicacion_Longitude) ) + sin( radians(inUbicacion_Latitude) ) * sin( radians( u.Latitude ) ) ) ) <= inRadio AND
+			(u.Delegacion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino , ' ', 2 ),' ',1) , '%')
 			OR
 		    r.Descripcion LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX( inTermino, ' ', -1 ),' ',2) , '%')
 		    OR
