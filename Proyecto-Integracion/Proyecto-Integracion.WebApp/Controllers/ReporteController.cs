@@ -32,7 +32,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
         public ActionResult Crear(Reporte r, Ubicacion u, FormCollection collection)
         {
 
-            String date = Request.Form["date"];
+            String date = Request.Form["fecha"];
             var perfil_Activo = Utils.SessionManager.PerfilActivo();
             if (perfil_Activo != null && Utils.SessionManager.CuentaActiva() != null && r.Incidente != 0)
             {
@@ -96,7 +96,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
             if (ubicacion.Modificar() && r.Incidente != 0)
             {
                 r.Ubicacion = ubicacion;
-                String date = Request.Form["date"];
+                String date = Request.Form["fecha"];
                 string pattern = "yyyy-dd-mm";
                 DateTime dt;
                 DateTime.TryParse(date, out dt);

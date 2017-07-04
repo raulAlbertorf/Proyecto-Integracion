@@ -15,7 +15,7 @@
     <script src="~/Contents/js/maps-modificar.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-       $("#date").datepicker({
+       $("#fecha").datepicker({
             dateFormat: 'yy-mm-dd'
 
        });
@@ -47,7 +47,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="FechaExpedicion" class="letra-prompt">Fecha</label>
-                            <input name="date" id="date" value="@Model.FechaExpedicion.ToString("d")" class="form-control" />
+                            <input name="fecha" id="fecha" value="@Model.FechaExpedicion.ToString("d")" class="form-control" />
                         </div>
                         @{ 
                         }
