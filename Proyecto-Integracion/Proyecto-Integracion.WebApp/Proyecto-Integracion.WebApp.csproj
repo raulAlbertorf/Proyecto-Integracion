@@ -282,7 +282,6 @@
     <Content Include="Views\Perfil\MisReportes.cshtml" />
     <Content Include="Contents\js\Marker.Text.js" />
     <Content Include="Views\Home\_CollapseDropDown_TipoIncidente.cshtml" />
-    <Content Include="Views\Home\Busqueda.cshtml" />
     <Content Include="Views\Home\_CollapseDropDown_All.cshtml" />
     <Content Include="Views\Home\_CollapseDropDown_Direccion.cshtml" />
     <Content Include="Views\Home\_CollapseDropDown_Fecha.cshtml" />

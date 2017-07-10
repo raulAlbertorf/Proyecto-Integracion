@@ -1,4 +1,4 @@
-﻿@using (Html.BeginForm("BusquedaGeneral", "Home", new { page = ViewBag.Page, cantResult = ViewBag.Results, filtro = 5, buscar = ViewBag.Termino }, FormMethod.Post))
+﻿@using (Html.BeginForm("BusquedaGeneral", "Home", new { page = 1, cantResult = 10, filtro = 5 }, FormMethod.Post))
 {//Busqueda por ALL
     <fieldset>
         <div class="col-lg-offset-1 col-lg-10">

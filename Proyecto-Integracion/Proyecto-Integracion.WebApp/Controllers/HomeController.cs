@@ -23,19 +23,10 @@ namespace Proyecto_Integracion.WebApp.Controllers
             return View();
         }
 
-        public ActionResult Busqueda(int? page, TipoIncidente incidente)
-        {
-            Estanteria e = new Estanteria();
-            List<Proyecto_Integracion.Models.Reporte> reportes = e.Buscar(incidente, 0, int.MaxValue);
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(reportes.ToPagedList(pageNumber, pageSize));
-        }
 
-        public ActionResult BusquedaGeneral(FormCollection collection, String buscar, int page = 1, int cantResult = 10, int filtro = 5)
+        public ActionResult BusquedaGeneral(FormCollection collection, String buscar, int page = 1, int cantResult = 10, TipoIncidente incidente = 0, int filtro = 5)
         {
             Estanteria e = new Estanteria();
-            var incidente = new TipoIncidente();
             if (String.IsNullOrEmpty(buscar))
             {
                 buscar = "";
@@ -68,30 +59,15 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 case 5: //All
                     result = e.BuscarPorAll(buscar, page, cantResult);
                     break;
-                case 6:
-                    switch (buscar)
-                    {
-                        case "#1":
-                            incidente = TipoIncidente.Homicidio;
-                            break;
-                        case "#2":
-                            incidente = TipoIncidente.Suicidio;
-                            break;
-                        case "#3":
-                            incidente = TipoIncidente.RoboAsalto;
-                            break;
-                        case "#4":
-                            incidente = TipoIncidente.Violacion;
-                            break;
-                        case "#5":
-                            incidente = TipoIncidente.ExplotacionSexual;
-                            break;
-                    }
+                case 6: //Tipo de Incidente
                     result = e.Buscar(incidente, page, cantResult);
                     break;
             }
             this.ViewBag.Page = page;
             this.ViewBag.Results = cantResult;
+            if (incidente != 0 && filtro == 6)
+                this.ViewBag.Termino = Utils.EnumHelper<TipoIncidente>.GetDisplayValue(incidente);
+            else
             this.ViewBag.Termino = buscar;
             this.ViewBag.Filtro = filtro;
 

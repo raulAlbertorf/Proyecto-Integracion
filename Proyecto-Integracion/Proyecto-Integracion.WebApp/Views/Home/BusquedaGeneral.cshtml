@@ -4,6 +4,7 @@
     ViewBag.Title = "Resultados";
     //var Perfil_Activo = Proyecto_Integracion.WebApp.Utils.SessionManager.PerfilActivo();
     //var Cuenta_Activa = Proyecto_Integracion.WebApp.Utils.SessionManager.CuentaActiva();
+    var incidente_res = new Proyecto_Integracion.Models.TipoIncidente();
 }
 
 @section Styles{
@@ -50,8 +51,16 @@
                                         <p class="text-center" id="no-resultados">No se han encontrado resultados para "<strong>@ViewBag.Termino</strong>"</p>
                                     </div>
                                 </div>
+
                         }
-                        @{var i = 0; }
+                        
+                            
+                        
+                        @{var i = 0;
+                            if (Model.Count() > 0) {
+                                incidente_res = Model.First().Incidente;
+                            }
+                        }
                         @try
                         {
                             foreach (var reporte in Model)
@@ -96,27 +105,27 @@
             <div class="panel-footer">
                 @if (ViewBag.Page > 1)
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page - 1 , buscar= ViewBag.Termino, cantResult = ViewBag.Results, filtro = ViewBag.Filtro })"
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page - 1 , buscar= ViewBag.Termino, cantResult = ViewBag.Results, filtro = ViewBag.Filtro, incidente = incidente_res })"
                        class="btn btn-default">
                         &laquo; Atras
                     </a>
                 }
                 else
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro, incidente = incidente_res} )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
                         &laquo; Atras
                     </a>
                 }
                 @if (ViewBag.More > 0)
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page + 1 , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )"
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page + 1 , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro, incidente = incidente_res } )"
                        class="btn btn-default">
                         Siguiente &raquo;
                     </a>
                 }
                 else
                 {
-                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
+                    <a href="@Url.Action("BusquedaGeneral", new { page = ViewBag.Page , buscar= ViewBag.Termino , cantResult = ViewBag.Results, filtro = ViewBag.Filtro, incidente = incidente_res } )" class="btn btn-default" style="opacity: 0.65; cursor: not-allowed;" disabled>
                         Siguiente &raquo;
                     </a>
                 }

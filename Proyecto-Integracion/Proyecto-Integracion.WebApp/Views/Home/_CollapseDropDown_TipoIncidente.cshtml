@@ -1,6 +1,6 @@
 ﻿@model Proyecto_Integracion.Models.Reporte
 
-@using (Html.BeginForm("Busqueda", "Home", FormMethod.Post))
+@using (Html.BeginForm("BusquedaGeneral", "Home", new { page = 1, cantResult = 10, filtro = 6}, FormMethod.Post))
 {
     <fieldset>
         <div class="col-lg-offset-1 col-lg-10">
