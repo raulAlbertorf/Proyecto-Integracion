@@ -52,11 +52,11 @@
             @RenderBody()
         </div>
     </div>
-    <div id="notificaciones">
-        @Html.Partial("~/Views/Shared/_NotificacionesModal.cshtml")
-    </div>
     <div id="footer">
         @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    </div>
+    <div id="notificaciones">
+        @Html.Partial("~/Views/Shared/_NotificacionesModal.cshtml")
     </div>
   
     <!-- jquery -->
@@ -98,8 +98,6 @@
     <!--Collapse-->
     <script type="text/javascript" src="~/Contents/js/collapse.js"></script>
 
-    <!--Ir atras-->
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#date").datepicker({
@@ -109,10 +107,18 @@
 
     </script>
 
+    <!--Ir atras-->
     <script type="text/javascript">
         function irAtras() {
             window.history.back();
         }
+    </script>
+
+    <!--Modal-->
+    <script type="text/javascript">
+    $(window).on('load',function(){
+        $('#NotificacionesModal').modal('show');
+    });
     </script>
 
     @RenderSection("Scripts", false)

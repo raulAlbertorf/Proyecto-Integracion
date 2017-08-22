@@ -39,6 +39,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
         public ActionResult Salir()
         {
             Utils.SessionManager.Salir();
+            Utils.UIWarnings.SetInfo("Sesión cerrada");
             return RedirectToAction("Index", "Home");
         }
 
@@ -73,6 +74,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
                         String body = "Hola,<br> Bienvenido a ReportIt,<br> Esperamos que nuestra aplicación te sea de ayuda<br><br>Saludos";
 
                         Utils.Email.SendEmail("Bienvenido a ReportIt", c.Email, body);
+                        Utils.UIWarnings.SetInfo("Cuenta creada exitosamente");
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -141,6 +143,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
             {
                 if (c.Eliminar())
                 {
+                    Utils.UIWarnings.SetInfo("Su cuenta de ReportIt ha sido eliminada exitosamente");
                     Utils.SessionManager.Salir();
                 }
             }

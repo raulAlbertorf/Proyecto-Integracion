@@ -1,5 +1,6 @@
---Delimiter $$
+--Delimiter $$ 
 DROP PROCEDURE IF EXISTS sp_Reporte_Seleccionar_Reportes_Termino_Fecha $$
+
 CREATE PROCEDURE sp_Reporte_Seleccionar_Reportes_Termino_Fecha (
 	inFecha VARCHAR(255),
     inPage int,
@@ -31,13 +32,12 @@ INNER JOIN ubicacion AS u
 INNER JOIN cuenta AS c
 	ON p.Cuenta_Email =  c.Email
     WHERE
-     CAST(r.Fecha AS DATE)= inFecha
-     #       OR
-	#YEAR(r.Fecha) = inFecha
+    CAST(r.Fecha AS DATE)= inFecha
 	ORDER BY r.Fecha desc
      LIMIT inPage, inCantResult;
     
     
     
-END $$
+END 
+$$
  

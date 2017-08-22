@@ -142,7 +142,6 @@
     <Content Include="Contents\css\bootstrap\datepicker.css" />
     <Content Include="Contents\css\bootstrap\jquery-ui.css" />
     <Content Include="Contents\css\Calendario.css" />
-    <Content Include="Contents\css\datepicker.css" />
     <Content Include="Contents\css\detalles-perfil.css" />
     <Content Include="Contents\css\detalles-reporte.css" />
     <Content Include="Contents\css\dotText.css" />
@@ -187,14 +186,10 @@
     <Content Include="Contents\img\perfiles\PICON_028.png" />
     <Content Include="Contents\img\perfiles\unknown-user.png" />
     <Content Include="Contents\js\bootstrap-confirmation.js" />
-    <Content Include="Contents\js\bootstrap-datepicker.es.min.js" />
-    <Content Include="Contents\js\bootstrap-datepicker.js" />
-    <Content Include="Contents\js\bootstrap-datepicker.min.js" />
     <Content Include="Contents\js\bootstrap-select.js" />
     <Content Include="Contents\js\bootstrap-select.min.js" />
     <Content Include="Contents\js\bootstrap.js" />
     <Content Include="Contents\js\bootstrap.min.js" />
-    <Content Include="Contents\js\collapse-Index.js" />
     <Content Include="Contents\js\collapse.js" />
     <Content Include="Contents\js\countCharacters.js" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.woff2" />
@@ -208,7 +203,6 @@
     <Content Include="Contents\css\bootstrap\bootstrap-datepicker3.standalone.min.css.map" />
     <None Include="Contents\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Contents\js\calendario.js" />
-    <Content Include="Contents\js\Datepicker.js" />
     <Content Include="Contents\js\Icon.Canvas.js" />
     <Content Include="Contents\js\imagen.js" />
     <Content Include="Contents\js\jquery-ui.js" />
@@ -226,6 +220,9 @@
     <Content Include="Contents\js\npm.js" />
     <Content Include="Contents\js\pagination.min.js" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
@@ -291,6 +288,7 @@
     <Content Include="Views\Home\_CollapseDropDown_MiUbicacion.cshtml" />
     <Content Include="Views\Home\BusquedaAvanzada.cshtml" />
     <Content Include="Views\Home\ResultadosAvanzados.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

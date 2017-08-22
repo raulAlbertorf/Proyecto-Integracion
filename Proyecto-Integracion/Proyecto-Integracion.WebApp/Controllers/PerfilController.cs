@@ -25,6 +25,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
             }
             else
             {
+                Utils.UIWarnings.SetError("No tiene los permisos para visualizar este perfil");
                 return RedirectToAction("Ingresar", "Cuenta");
             }
         }
@@ -98,7 +99,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 p.Ubicacion.Direccion = Utils.GeoLocation.direccion(p.Ubicacion);
                 if (p.Modificar() && p.Ubicacion.Modificar())
                 {
-                    Utils.UIWarnings.SetInfo("Módificacion dde perfil exitosa");
+                    Utils.UIWarnings.SetInfo("Módificacion de perfil exitosa");
                     return RedirectToAction("Detalles", "Perfil", new { Id = p.Id });
                 }
             }
@@ -123,6 +124,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
                 int pageNumber = (page ?? 1);
                 return View(items.ToPagedList(pageNumber, pageSize));
             }
+            Utils.UIWarnings.SetError("No tiene los permisos necesarios para acceder a esta ventana");
             return RedirectToAction("Ingresar", "Cuenta");
         }
     }

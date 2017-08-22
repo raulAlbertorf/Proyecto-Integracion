@@ -12,9 +12,20 @@
 @section Scripts{
     <script src="~/Contents/js/maps-registrar.js"></script>
     <script type="text/javascript">
-            $(".btn_ingresar").hide();
             $(".header_2").hide();
             $(".header_1").hide();
+            function validatePassword() {
+                var password = document.getElementById("Contrasena");
+
+                if (password.value.length < 6) {
+                    document.getElementById("mensaje").innerHTML = "La contraseña debe tener un largo minimo de 6 caracteres";
+                    document.getElementById("button").disabled = true;
+                }
+                else {
+                    document.getElementById("mensaje").innerHTML = "";
+                    document.getElementById("button").disabled = false;
+                }
+            }
     </script>
 }
 
@@ -35,16 +46,16 @@
                     <!--<form class="form-horizontal">-->
                     <div class="form-group">
                         <label for="Email" class="letra-prompt">Email</label>
-                        <input type="email" name="Email" class="form-control input-lg" placeholder="Email">
+                        <input type="email" name="Email" class="form-control input-lg" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="Contrasena" class="letra-prompt">Contraseña</label>
-                        <input type="password" name="Contrasena" class="form-control input-lg" placeholder="Contraseña" maxlength="15" minlength="6">
-                        <p><small>Introduce contraseña mayor 6 caracteres</small></p>
+                        <input type="password" id="Contrasena" name="Contrasena" onkeyup="validatePassword();" class="form-control input-lg" placeholder="Contraseña" maxlength="15" minlength="6" required>
+                        <p id="mensaje" class="text-left"></p>
                     </div>
                     <div class="form-group">
                         <label for="Nombre" class="letra-prompt">Nombre</label>
-                        <input type="text" name="Nombre" class="form-control input-lg" placeholder="Juan Perez" maxlength="15" minlength="6">
+                        <input type="text" name="Nombre" class="form-control input-lg" placeholder="Juan Perez" maxlength="15" minlength="6" required>
                     </div>
                     <div class="form-group">
                         <!--<label for="Latitud" class="letra-prompt">Latitude</label>-->
