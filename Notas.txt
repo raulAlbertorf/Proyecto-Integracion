@@ -41,19 +41,17 @@ https://console.developers.google.com/apis/credentials/wizard?api=maps-backend.g
 920
 
 
-@Html.EnumDropDownListFor(model => model.WelcomeMessageType, null, new { @id = "ddlMessageType", @class = "form-control", @style = "width:200px;" })
 
 
-@Html.DropDownList("Estado", new SelectList(Enum.GetValues(typeof(Proyecto_Integracion.Models.TipoIncidente)), "Display"), new { @class = "form-contr
+/// LINK PARA PUBLICACIÓN DE SITIO WEB 
+	https://docs.microsoft.com/en-us/aspnet/web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 
+// LINK PARA SOFTWARE DE DESARROLLO DE MICROSOFT -> DESCARGAR Y PROBAR 
+	https://www.microsoft.com/web/webmatrix/
 
+//FORO DE PREGUNTAS -> BUSCAR PREGUNTAS SOBRE MI INTERES
+	https://forums.asp.net/1224.aspx/1?WebMatrix+and+ASP+NET+Web+Pages
 
-//No sirven pero quiero guardarlos
-
-   @Html.DropDownList("Incidente", Proyecto_Integracion.WebApp.Utils.EnumHelper<Proyecto_Integracion.Models.TipoIncidente>.Seleccionar_SelectList(@Model.Incidente), new { @class = "form-control" })
-
-
-@Html.TextBox("date", @Model.FechaExpedicion, "{0:yyyy-dd-MM}", new { id = "date", @class = "form-control"} )
 
 
 
@@ -97,40 +95,7 @@ https://console.developers.google.com/apis/credentials/wizard?api=maps-backend.g
 
 
 
-<div class="container-fluid navbar-search">
-    <div class="row">
-        <div class="cosa col-md-6 col-md-offset-3">
-            @using (Html.BeginForm("BusquedaGeneral", "Home", FormMethod.Post))
-            {
-                <div class="input-group">
-                    <input type="hidden" value="@ViewBag.Page" name="page" />
-                    <input type="hidden" value="@ViewBag.Results" name="cantResult" />
-                    <input type="hidden" value="@ViewBag.Filtro" name="filtro" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="filtros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="fa fa-reorder texto-naranja"></i> <span class="caret texto-naranja"></span></button>
-                        <ul class="dropdown-menu" aria-labelledby="filtros">
-                            <li><a href="@Url.Action("BusquedaGeneral", "Home", new { page = 1 , cantResult = 10, filtro = 1, buscar= ViewBag.Termino } )">Por Dirección</a></li>
-                            <li><a href="@Url.Action("BusquedaGeneral", "Home", new { page = 1 , cantResult = 10, filtro = 2, buscar= ViewBag.Termino })">Por Fecha</a></li>
-                            <li><a href="@Url.Action("BusquedaGeneral", "Home", new { page = 1 , cantResult = 10, filtro = 3, buscar= ViewBag.Termino })">Por Palabra clave</a></li>
-                            <li><a href="@Url.Action("BusquedaGeneral", "Home", new { page = 1 , cantResult = 10, filtro = 6, buscar= ViewBag.Termino })">Por Incidente </a></li>
-                            <li><a href="@Url.Action("BusquedaGeneral", "Home", new { page = 1 , cantResult = 10, filtro = 5, buscar= ViewBag.Termino })">Por Todo</a></li>
-                            @if (Perfil_activo != null && cuenta_activa != null)
-                            {
-                                <li role="separator" class="divider"></li>
-                                <li><a href="@Url.Action("BusquedaGeneral", "Home", new { page = 1 , cantResult = 10, filtro = 4, buscar= ViewBag.Termino })">Por Mi Ubicación</a></li>
-                            }
-                        </ul>
-                    </span>
-                    @Html.TextBox("buscar", null, new { @class = "form-control" })
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default texto-naranja"><i class="fa fa-search"></i></button>
-                    </span>
 
-                </div>
-            }
-        </div>
-    </div>
-</div>
 
 
 

@@ -48,7 +48,7 @@ namespace Proyecto_Integracion.WebApp.Controllers
                     r.Ubicacion = u;
                     if (r.Crear())
                     {
-                        Utils.UIWarnings.SetError("Reporte creado exitosamente");
+                        Utils.UIWarnings.SetInfo("Reporte creado exitosamente");
                         return RedirectToAction("Detalles", "Perfil", new { Id = perfil_Activo.Id });
                     }
                     else
